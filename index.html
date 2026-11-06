@@ -1,72 +1,84 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập - Fashion E-commerce</title>
+    <title>Document</title>
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f0f2f5; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-        }
-        .login-container { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 12px; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
-            width: 100%; 
-            max-width: 350px; 
-            text-align: center; 
-        }
-        h2 { color: #1c1e21; margin-bottom: 25px; }
-        input { 
-            width: 90%; 
-            padding: 12px; 
-            margin: 10px 0; 
-            border: 1px solid #ddd; 
-            border-radius: 6px; 
-            font-size: 15px;
-        }
-        .btn-login { 
-            background-color: #0866ff; 
-            color: white; 
-            border: none; 
-            padding: 12px; 
-            width: 95%; 
-            border-radius: 6px; 
-            font-size: 16px; 
-            font-weight: bold;
-            cursor: pointer; 
-            margin-top: 15px;
-            transition: 0.3s;
-        }
-        .btn-login:hover { background-color: #0054d6; }
+        /* Thiết lập cho phần Danh sách Sản phẩm */
+.product-section {
+    margin: 40px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.section-title {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 30%;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng nảy lên khi di chuột */
+}
+
+.price {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-buy {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+
+.btn-buy:hover {
+    background-color: #2980b9;
+}
     </style>
 </head>
 <body>
-
-    <div class="login-container">
-        <h2>Đăng Nhập Hệ Thống</h2>
-        <input type="text" id="username" placeholder="Tên đăng nhập (VD: admin)">
-        <input type="password" id="password" placeholder="Mật khẩu">
-        <button class="btn-login" onclick="kiemTraDangNhap()">Đăng Nhập</button>
+    <!-- Phần Danh sách Sản phẩm -->
+    <div class="product-section">
+        <h2 class="section-title">Sản phẩm nổi bật</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3>Áo Hoodie Nam</h3>
+                <p class="price">250.000 VNĐ</p>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+            <div class="product-card">
+                <h3>Quần Jean Nữ</h3>
+                <p class="price">300.000 VNĐ</p>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+            <div class="product-card">
+                <h3>Giày Sneaker</h3>
+                <p class="price">500.000 VNĐ</p>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+        </div>
     </div>
-
-    <script>
-        function kiemTraDangNhap() {
-            const user = document.getElementById('username').value;
-            if(user === '') {
-                alert('Vui lòng nhập tên đăng nhập để tiếp tục!');
-            } else {
-                alert('Chào mừng ' + user + ' đã quay trở lại hệ thống!');
-            }
-        }
-    </script>
-
 </body>
 </html>
