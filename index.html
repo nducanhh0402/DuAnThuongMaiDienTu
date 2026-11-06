@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Fashion E-commerce</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f0f2f5; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .login-container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
+            width: 100%; 
+            max-width: 350px; 
+            text-align: center; 
+        }
+        h2 { color: #1c1e21; margin-bottom: 25px; }
+        input { 
+            width: 90%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            font-size: 15px;
+        }
+        .btn-login { 
+            background-color: #0866ff; 
+            color: white; 
+            border: none; 
+            padding: 12px; 
+            width: 95%; 
+            border-radius: 6px; 
+            font-size: 16px; 
+            font-weight: bold;
+            cursor: pointer; 
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn-login:hover { background-color: #0054d6; }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Đăng Nhập Hệ Thống</h2>
+        <input type="text" id="username" placeholder="Tên đăng nhập (VD: admin)">
+        <input type="password" id="password" placeholder="Mật khẩu">
+        <button class="btn-login" onclick="kiemTraDangNhap()">Đăng Nhập</button>
+    </div>
+
+    <script>
+        function kiemTraDangNhap() {
+            const user = document.getElementById('username').value;
+            if(user === '') {
+                alert('Vui lòng nhập tên đăng nhập để tiếp tục!');
+            } else {
+                alert('Chào mừng ' + user + ' đã quay trở lại hệ thống!');
+            }
+        }
+    </script>
+
+</body>
+</html>
