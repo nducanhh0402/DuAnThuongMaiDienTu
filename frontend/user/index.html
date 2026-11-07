@@ -18,14 +18,8 @@
       html {
         scroll-behavior: smooth;
         -webkit-font-smoothing: antialiased;
-      }
-
-      body {
-        overscroll-behavior-y: none;
-      }
-
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        -moz-osx-font-smoothing: grayscale;
+        font-smooth: antialiased;
       }
       /* ==========================================================================
        1. CSS RESET & GLOBAL VARIABLES
@@ -70,7 +64,10 @@
         color: var(--text-main);
         line-height: 1.5;
         overflow-x: hidden;
+        overscroll-behavior-y: none;
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-smooth: antialiased;
       }
 
       a {
@@ -1794,9 +1791,6 @@
         <div class="top-links">
           <a href="#" onclick="showToast('Thông báo', 'Hệ thống tra cứu đơn hàng trực tuyến đang hoạt động'); return false;">Tra cứu đơn hàng</a>
           <a href="#" onclick="showToast('Thông báo', 'Tải ứng dụng JML Store trên iOS / Android'); return false;">Tải ứng dụng</a>
-          <a href="../admin/index.html" style="color: #fdba74; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;" title="Chuyển sang trang Quản trị Sàn JML Store">
-            <span>🛡️ Kênh Quản Trị Sàn (Admin)</span>
-          </a>
         </div>
       </div>
     </div>
@@ -2048,29 +2042,6 @@
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
                 Hồ sơ cá nhân
-              </a>
-              <a
-                href="../admin/index.html"
-                style="
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                  padding: 10px 16px;
-                  font-size: 13px;
-                  font-weight: 600;
-                  color: #0D6EFD;
-                  transition: background 0.2s;
-                "
-                onmouseover="this.style.background = 'var(--surface-dim)'"
-                onmouseout="this.style.background = 'transparent'"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="14" width="7" height="7"></rect>
-                  <rect x="3" y="14" width="7" height="7"></rect>
-                </svg>
-                Quản Trị Sàn (Admin)
               </a>
               <div style="height: 1px; background: var(--border); margin: 4px 0"></div>
               <a
@@ -2502,7 +2473,6 @@
               <a href="#">Tuyển dụng nhân tài</a>
               <a href="#">Điều khoản dịch vụ</a>
               <a href="#">Chính sách bảo mật</a>
-              <a href="../admin/index.html" style="color: #fdba74; font-weight: 600;">Kênh Quản Trị Sàn (Admin)</a>
             </div>
           </div>
 
