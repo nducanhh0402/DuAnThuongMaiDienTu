@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>JML Store - Sàn Thương Mại Điện Tử Cao Cấp</title>
+    <link rel="icon" type="image/svg+xml" href="../admin/jml-store-icon.svg" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Top Utilities Bar -->
+    <div class="top-bar">
+      <div class="container top-bar-inner">
+        <div style="display: flex; align-items: center; gap: 16px">
+          <span
+            >📞 Hotline:
+            <strong style="color: #fff">1900 8888</strong> (24/7)</span
+          >
+          <span style="opacity: 0.4">|</span>
+          <span
+            >✉️ Hỗ trợ:
+            <strong style="color: #fff">cskh@jmlstore.vn</strong></span
+          >
+        </div>
+        <div class="top-links">
+          <a
+            href="#"
+            onclick="
+              showToast(
+                'Thông báo',
+                'Hệ thống tra cứu đơn hàng trực tuyến đang hoạt động',
+              );
+              return false;
+            "
+            >Tra cứu đơn hàng</a
+          >
+          <a
+            href="#"
+            onclick="
+              showToast(
+                'Thông báo',
+                'Tải ứng dụng JML Store trên iOS / Android',
+              );
+              return false;
+            "
+            >Tải ứng dụng</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Header -->
+    <header class="header-main">
+      <div class="container header-container">
+        <!-- Logo -->
+        <a
+          class="logo"
+          href="#"
+          onclick="
+            showHomeView();
+            return false;
+          "
+          title="Về Trang Chủ JML Store"
+        >
+          <span class="logo-badge">JML</span>
+          <span style="letter-spacing: -0.5px; font-weight: 800">STORE</span>
+        </a>
+
+        <!-- Smart Search -->
+        <div class="search-wrapper">
+          <form
+            class="search-box"
+            id="searchForm"
+            onsubmit="
+              event.preventDefault();
+              handleSearch();
+            "
+          >
+            <input
+              class="search-input"
+              id="searchInput"
+              placeholder="Tìm kiếm sản phẩm cao cấp, thương hiệu độc quyền..."
+              type="text"
+            />
+            <button class="search-btn" type="submit">
+              <svg
+                fill="none"
+                height="15"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+                width="15"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+              </svg>
+              Tìm Kiếm
+            </button>
+          </form>
+          <div class="search-keywords">
+            <span>Gợi ý:</span>
+            <a
+              onclick="
+                applyQuickSearch('iPad');
+                return false;
+              "
+              >iPad Pro</a
+            >
+            <a
+              onclick="
+                applyQuickSearch('Tai Nghe');
+                return false;
+              "
+              >Tai nghe chống ồn</a
+            >
+            <a
+              onclick="
+                applyQuickSearch('Đồng Hồ');
+                return false;
+              "
+              >Đồng hồ Thụy Sĩ</a
+            >
+            <a
+              onclick="
+                applyQuickSearch('Áo Blazer');
+                return false;
+              "
+              >Áo Blazer Ý</a
+            >
+            <a
+              onclick="
+                applyQuickSearch('Logitech');
+                return false;
+              "
+              >Chuột MX Master</a
+            >
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="header-actions">
+          <!-- Notification Button -->
+          <div style="position: relative">
+            <button aria-label="Thông báo" class="cart-btn" id="notifToggleBtn">
+              <svg
+                fill="none"
+                height="22"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="22"
+              >
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <div class="cart-badge" style="background: #ef4444">3</div>
+            </button>
+            <div class="cart-dropdown" id="notifDropdown" style="width: 320px">
+              <div
+                style="
+                  font-weight: 700;
+                  font-size: 14px;
+                  border-bottom: 1px solid var(--border);
+                  padding-bottom: 8px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span>Thông Báo Mới</span>
+                <span
+                  style="
+                    font-size: 11px;
+                    color: var(--primary);
+                    font-weight: 600;
+                    cursor: pointer;
+                  "
+                  onclick="
+                    showToast(
+                      'Thông báo',
+                      'Đã đánh dấu tất cả thông báo là đã đọc',
+                    )
+                  "
+                  >Đã đọc tất cả</span
+                >
+              </div>
+              <div
+                style="
+                  max-height: 260px;
+                  overflow-y: auto;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                "
+              >
+                <div
+                  style="
+                    padding: 8px;
+                    border-radius: 8px;
+                    background: var(--surface-dim);
+                    font-size: 12px;
+                  "
+                >
+                  <div
+                    style="
+                      font-weight: 700;
+                      color: var(--secondary);
+                      margin-bottom: 2px;
+                    "
+                  >
+                    🔥 Flash Sale đã bắt đầu!
+                  </div>
+                  <div style="color: var(--text-muted)">
+                    Giảm đến 35% cho các dòng thiết bị âm thanh cao cấp.
+                  </div>
+                </div>
+                <div
+                  style="
+                    padding: 8px;
+                    border-radius: 8px;
+                    background: var(--surface-dim);
+                    font-size: 12px;
+                  "
+                >
+                  <div
+                    style="
+                      font-weight: 700;
+                      color: var(--secondary);
+                      margin-bottom: 2px;
+                    "
+                  >
+                    🎁 Voucher 200.000₫ sẵn sàng
+                  </div>
+                  <div style="color: var(--text-muted)">
+                    Áp dụng ngay cho đơn hàng phụ kiện đồ da thủ công.
+                  </div>
+                </div>
+                <div
+                  style="
+                    padding: 8px;
+                    border-radius: 8px;
+                    background: var(--surface-dim);
+                    font-size: 12px;
+                  "
+                >
+                  <div
+                    style="
+                      font-weight: 700;
+                      color: var(--secondary);
+                      margin-bottom: 2px;
+                    "
+                  >
+                    📦 Đơn hàng #LX8921 đang giao
+                  </div>
+                  <div style="color: var(--text-muted)">
+                    Kiện hàng đang được nhân viên giao trong ngày hôm nay.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile Dropdown -->
+          <div style="position: relative">
+            <div class="user-profile" id="userProfileBtn">
+              <div class="user-avatar">AD</div>
+              <span style="font-size: 13px; font-weight: 600">Anh Đức</span>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </div>
+            <div
+              class="cart-dropdown"
+              id="userDropdown"
+              style="width: 240px; padding: 8px 0; gap: 0"
+            >
+              <div
+                style="
+                  padding: 10px 16px;
+                  border-bottom: 1px solid var(--border);
+                  font-size: 12px;
+                  color: var(--text-muted);
+                "
+              >
+                Tài khoản:
+                <strong
+                  style="
+                    color: var(--secondary);
+                    display: block;
+                    font-size: 13px;
+                  "
+                  >Anh Đức (VIP Member)</strong
+                >
+              </div>
+              <a
+                href="#"
+                onclick="
+                  showToast('Hồ sơ', 'Mở trang hồ sơ cá nhân');
+                  return false;
+                "
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 10px 16px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: var(--text-main);
+                  transition: background 0.2s;
+                "
+                onmouseover="this.style.background = 'var(--surface-dim)'"
+                onmouseout="this.style.background = 'transparent'"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Hồ sơ cá nhân
+              </a>
+              <div
+                style="height: 1px; background: var(--border); margin: 4px 0"
+              ></div>
+              <a
+                href="#"
+                onclick="
+                  showToast('Đăng xuất', 'Bạn đã đăng xuất tài khoản');
+                  return false;
+                "
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 10px 16px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: #ef4444;
+                  transition: background 0.2s;
+                "
+                onmouseover="this.style.background = 'var(--surface-dim)'"
+                onmouseout="this.style.background = 'transparent'"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Đăng xuất
+              </a>
+            </div>
+          </div>
+
+          <!-- Shopping Cart Dropdown -->
+          <div style="position: relative">
+            <button aria-label="Giỏ hàng" class="cart-btn" id="cartToggleBtn">
+              <svg
+                fill="none"
+                height="22"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="22"
+              >
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                ></path>
+              </svg>
+              <div class="cart-badge" id="cartCountBadge">0</div>
+            </button>
+            <div class="cart-dropdown" id="cartDropdown">
+              <div
+                style="
+                  font-weight: 700;
+                  font-size: 14px;
+                  border-bottom: 1px solid var(--border);
+                  padding-bottom: 8px;
+                  display: flex;
+                  justify-content: space-between;
+                "
+              >
+                <span>Giỏ Hàng Của Bạn</span>
+                <span
+                  id="cartCountHeader"
+                  style="
+                    font-size: 12px;
+                    color: var(--text-muted);
+                    font-weight: 500;
+                  "
+                  >0 sản phẩm</span
+                >
+              </div>
+              <div
+                id="cartItemsList"
+                style="max-height: 240px; overflow-y: auto"
+              >
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--text-muted);
+                    text-align: center;
+                    padding: 24px 0;
+                  "
+                >
+                  Chưa có sản phẩm nào trong giỏ hàng
+                </p>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-weight: 700;
+                  font-size: 14px;
+                  border-top: 1px solid var(--border);
+                  padding-top: 8px;
+                "
+              >
+                <span>Tổng tiền:</span>
+                <span id="cartTotalSum" style="color: var(--primary)">0 ₫</span>
+              </div>
+              <button
+                onclick="handleCheckout()"
+                style="
+                  background: var(--primary);
+                  color: #fff;
+                  padding: 10px;
+                  border-radius: var(--radius-sm);
+                  font-weight: 700;
+                  font-size: 13px;
+                  width: 100%;
+                  transition: var(--transition);
+                "
+                onmouseover="this.style.background = 'var(--primary-hover)'"
+                onmouseout="this.style.background = 'var(--primary)'"
+              >
+                Thanh Toán Ngay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- SPA VIEW 1: TRANG CHỦ (HOME VIEW) -->
+      <div id="view-home" class="spa-section active">
+        <!-- Hero Banner Slider -->
+        <section class="hero-section reveal-on-scroll revealed">
+          <div class="hero-grid">
+            <!-- Main Interactive Slider -->
+            <div class="main-slider" id="mainSlider">
+              <!-- Slide 1 -->
+              <div
+                class="slide active"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1200&q=80&quot;);
+                "
+              >
+                <div class="slide-content">
+                  <span class="slide-tag">Bộ Sưu Tập Âm Thanh 2025</span>
+                  <h1 class="slide-title">Trải Nghiệm Đẳng Cấp Studio</h1>
+                  <p class="slide-desc">
+                    Thưởng thức âm thanh chuẩn Hi-Res Audio với tai nghe chống
+                    ồn chủ động cao cấp giảm tới 35%.
+                  </p>
+                  <button class="btn-hero" onclick="scrollToFlashSale()">
+                    Khám Phá Ngay
+                    <svg
+                      fill="none"
+                      height="16"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      viewBox="0 0 24 24"
+                      width="16"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div
+                class="slide"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80&quot;);
+                "
+              >
+                <div class="slide-content">
+                  <span class="slide-tag">Đồng Hồ Tinh Hoa</span>
+                  <h2 class="slide-title">
+                    Thời Khắc Sang Trọng &amp; Hoàn Mỹ
+                  </h2>
+                  <p class="slide-desc">
+                    Dòng đồng hồ cơ tự động Chronograph phiên bản giới hạn dành
+                    riêng cho quý ông hiện đại.
+                  </p>
+                  <button class="btn-hero" onclick="scrollToFlashSale()">
+                    Xem Bộ Sưu Tập
+                    <svg
+                      fill="none"
+                      height="16"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      viewBox="0 0 24 24"
+                      width="16"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div
+                class="slide"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=1200&q=80&quot;);
+                "
+              >
+                <div class="slide-content">
+                  <span class="slide-tag">Công Nghệ Tương Lai</span>
+                  <h2 class="slide-title">Smartwatch Series Pro Ultra</h2>
+                  <p class="slide-desc">
+                    Khung vỏ Titanium hàng không, đo chỉ số sinh học tức thời,
+                    pin kéo dài 14 ngày bền bỉ.
+                  </p>
+                  <button class="btn-hero" onclick="scrollToFlashSale()">
+                    Mua Với Giá Ưu Đãi
+                    <svg
+                      fill="none"
+                      height="16"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      viewBox="0 0 24 24"
+                      width="16"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="slider-arrows">
+                <button
+                  aria-label="Slide trước"
+                  class="slider-arrow-btn"
+                  id="prevSlideBtn"
+                >
+                  ❮
+                </button>
+                <button
+                  aria-label="Slide sau"
+                  class="slider-arrow-btn"
+                  id="nextSlideBtn"
+                >
+                  ❯
+                </button>
+              </div>
+              <div class="slider-nav" id="sliderDots">
+                <div class="slider-dot active" data-index="0"></div>
+                <div class="slider-dot" data-index="1"></div>
+                <div class="slider-dot" data-index="2"></div>
+              </div>
+            </div>
+
+            <!-- 2 Side Banners -->
+            <div class="side-banners">
+              <div class="side-banner side-banner-1">
+                <span
+                  style="
+                    font-size: 11px;
+                    font-weight: 700;
+                    color: #a5b4fc;
+                    text-transform: uppercase;
+                  "
+                >
+                  Bộ Sưu Tập Giới Hạn
+                </span>
+                <h3 class="side-banner-title">Nước Hoa Trầm Hương Pháp</h3>
+                <p class="side-banner-sub">Hương thơm tinh tế, lưu hương 24h</p>
+                <a
+                  class="side-banner-link"
+                  href="#"
+                  onclick="
+                    applyQuickSearch('Nước hoa');
+                    return false;
+                  "
+                  >Khám phá chi tiết →</a
+                >
+              </div>
+              <div class="side-banner side-banner-2">
+                <span
+                  style="
+                    font-size: 11px;
+                    font-weight: 700;
+                    color: #fed7aa;
+                    text-transform: uppercase;
+                  "
+                >
+                  Ưu Đãi Hôm Nay
+                </span>
+                <h3 class="side-banner-title">Phụ Kiện Da Thuần Chay</h3>
+                <p class="side-banner-sub">
+                  Túi xách &amp; Ví cầm tay thủ công
+                </p>
+                <a
+                  class="side-banner-link"
+                  href="#"
+                  onclick="
+                    applyQuickSearch('Ví Da');
+                    return false;
+                  "
+                  >Nhận Voucher 200K →</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Categories Grid -->
+        <section class="reveal-on-scroll revealed">
+          <div class="section-title-wrap">
+            <div>
+              <h2 class="section-title">Danh Mục Nổi Bật</h2>
+              <p class="section-subtitle">
+                Tuyển chọn các danh mục sản phẩm cao cấp được chứng thực nguồn
+                gốc
+              </p>
+            </div>
+            <a
+              class="view-all-link"
+              onclick="
+                filterCategory('all');
+                scrollToRecommend();
+              "
+              >Xem Tất Cả →</a
+            >
+          </div>
+          <div class="categories-grid">
+            <div
+              class="category-card"
+              onclick="
+                filterCategory('audio');
+                scrollToRecommend();
+              "
+            >
+              <div class="category-icon">🎧</div>
+              <div class="category-name">Thiết Bị Âm Thanh</div>
+            </div>
+            <div
+              class="category-card"
+              onclick="
+                filterCategory('watch');
+                scrollToRecommend();
+              "
+            >
+              <div class="category-icon">⌚</div>
+              <div class="category-name">Đồng Hồ Hiệu</div>
+            </div>
+            <div
+              class="category-card"
+              onclick="
+                filterCategory('tech');
+                scrollToRecommend();
+              "
+            >
+              <div class="category-icon">📱</div>
+              <div class="category-name">Điện Thoại &amp; Tablet</div>
+            </div>
+            <div
+              class="category-card"
+              onclick="
+                filterCategory('tech');
+                scrollToRecommend();
+              "
+            >
+              <div class="category-icon">💻</div>
+              <div class="category-name">Laptop Siêu Mỏng</div>
+            </div>
+            <div
+              class="category-card"
+              onclick="
+                filterCategory('fashion');
+                scrollToRecommend();
+              "
+            >
+              <div class="category-icon">👔</div>
+              <div class="category-name">Thời Trang Quý Ông</div>
+            </div>
+            <div
+              class="category-card"
+              onclick="
+                filterCategory('fashion');
+                scrollToRecommend();
+              "
+            >
+              <div class="category-icon">👜</div>
+              <div class="category-name">Túi Xách Hàng Hiệu</div>
+            </div>
+            <div
+              class="category-card"
+              onclick="
+                filterCategory('fashion');
+                scrollToRecommend();
+              "
+            >
+              <div class="category-icon">✨</div>
+              <div class="category-name">Mỹ Phẩm Cao Cấp</div>
+            </div>
+            <div
+              class="category-card"
+              onclick="
+                filterCategory('tech');
+                scrollToRecommend();
+              "
+            >
+              <div class="category-icon">🛋️</div>
+              <div class="category-name">Nội Thất &amp; Phụ Kiện</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Flash Sale Section -->
+        <section
+          class="flash-sale-wrapper reveal-on-scroll revealed"
+          id="flashSaleSection"
+        >
+          <div class="flash-sale-header">
+            <div class="flash-title-box">
+              <div class="flash-badge">
+                <svg
+                  fill="currentColor"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  width="18"
+                >
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                FLASH SALE
+              </div>
+              <div class="countdown-timer">
+                <span style="color: var(--text-muted); font-size: 13px"
+                  >KẾT THÚC TRONG</span
+                >
+                <div class="countdown-box" id="hoursBox">04</div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box" id="minutesBox">10</div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box" id="secondsBox">00</div>
+              </div>
+            </div>
+            <a
+              class="view-all-link"
+              onclick="
+                scrollToFlashSale();
+                showToast(
+                  'Flash Sale',
+                  'Các deal sốc đang được cập nhật liên tục!',
+                );
+              "
+              >Xem Tất Cả Deal Sốc →</a
+            >
+          </div>
+          <!-- Flash Sale Products (Rendered by JS) -->
+          <div class="flash-products-grid" id="flashProductsContainer"></div>
+        </section>
+
+        <!-- Recommend Section (Gợi Ý Hôm Nay) -->
+        <section class="recommend-section reveal-on-scroll revealed">
+          <div class="section-title-wrap">
+            <div>
+              <h2 class="section-title">Gợi Ý Hôm Nay</h2>
+              <p class="section-subtitle">
+                Sản phẩm được gợi ý riêng cho gu thẩm mỹ của bạn (Nhấp vào ảnh
+                để xem chi tiết sản phẩm)
+              </p>
+            </div>
+          </div>
+          <!-- Category Filter Tabs -->
+          <div class="recommend-tabs">
+            <button
+              class="tab-btn active"
+              onclick="filterCategory('all', this)"
+            >
+              Tất Cả
+            </button>
+            <button class="tab-btn" onclick="filterCategory('audio', this)">
+              Âm Thanh &amp; Phụ Kiện
+            </button>
+            <button class="tab-btn" onclick="filterCategory('watch', this)">
+              Đồng Hồ Cao Cấp
+            </button>
+            <button class="tab-btn" onclick="filterCategory('fashion', this)">
+              Thời Trang &amp; Đồ Da
+            </button>
+            <button class="tab-btn" onclick="filterCategory('tech', this)">
+              Thiết Bị Số
+            </button>
+          </div>
+          <!-- Products Grid (Rendered by JS) -->
+          <div class="recommend-grid" id="recommendProductsContainer"></div>
+        </section>
+      </div>
+
+      <!-- SPA VIEW 2: CHI TIẾT SẢN PHẨM (PRODUCT DETAIL VIEW) -->
+      <div id="view-product-detail" class="spa-section">
+        <!-- Rendered dynamically by openProductDetail(id) -->
+      </div>
+    </main>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Cột 1: Thương hiệu & Liên hệ -->
+          <div class="footer-col">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 16px;
+              "
+            >
+              <span
+                class="logo-badge"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--accent)
+                  );
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: var(--radius-sm);
+                  font-size: 14px;
+                  font-weight: 800;
+                "
+                >JML</span
+              >
+              <span
+                style="
+                  font-size: 20px;
+                  font-weight: 800;
+                  color: #fff;
+                  letter-spacing: -0.5px;
+                "
+                >STORE</span
+              >
+            </div>
+            <p
+              style="
+                font-size: 13px;
+                line-height: 1.6;
+                color: #94a3b8;
+                margin-bottom: 16px;
+              "
+            >
+              Sàn thương mại điện tử phân phối thời trang, đồng hồ &amp; thiết
+              bị công nghệ cao cấp chính hãng hàng đầu Việt Nam.
+            </p>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                font-size: 13px;
+                color: #cbd5e1;
+              "
+            >
+              <div>📍 Địa chỉ: Tòa nhà Discovery Complex, Cầu Giấy, Hà Nội</div>
+              <div>
+                📞 Hotline: <strong style="color: #fff">1900 8888</strong> (Hỗ
+                trợ 24/7)
+              </div>
+              <div>
+                ✉️ Email CSKH:
+                <strong style="color: #fff">cskh@jmlstore.vn</strong>
+              </div>
+            </div>
+            <div style="margin-top: 18px">
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 6px;
+                  padding: 4px 12px;
+                  border-radius: 99px;
+                  background: rgba(16, 185, 129, 0.15);
+                  border: 1px solid rgba(16, 185, 129, 0.4);
+                  color: #34d399;
+                  font-size: 11px;
+                  font-weight: 700;
+                "
+              >
+                ✓ ĐÃ ĐĂNG KÝ BỘ CÔNG THƯƠNG
+              </span>
+            </div>
+          </div>
+
+          <!-- Cột 2: Về JML Store -->
+          <div class="footer-col">
+            <h4>Về JML Store</h4>
+            <div class="footer-links">
+              <a
+                href="#"
+                onclick="
+                  showHomeView();
+                  return false;
+                "
+                >Trang chủ cửa hàng</a
+              >
+              <a href="#">Giới thiệu công ty</a>
+              <a href="#">Tuyển dụng nhân tài</a>
+              <a href="#">Điều khoản dịch vụ</a>
+              <a href="#">Chính sách bảo mật</a>
+            </div>
+          </div>
+
+          <!-- Cột 3: Hỗ Trợ Khách Hàng -->
+          <div class="footer-col">
+            <h4>Hỗ Trợ Khách Hàng</h4>
+            <div class="footer-links">
+              <a href="#">Trung tâm trợ giúp</a>
+              <a href="#">Hướng dẫn mua hàng</a>
+              <a href="#">Chính sách đổi trả 30 ngày</a>
+              <a href="#">Tra cứu đơn hàng</a>
+              <a href="#">Bảo hành chính hãng 100%</a>
+              <a href="#">Đặc quyền Concierge VIP</a>
+            </div>
+          </div>
+
+          <!-- Cột 4: Thanh Toán & Bảo Mật -->
+          <div class="footer-col">
+            <h4>Thanh Toán &amp; Bảo Mật</h4>
+            <p
+              style="
+                font-size: 13px;
+                color: #94a3b8;
+                margin-bottom: 14px;
+                line-height: 1.5;
+              "
+            >
+              Chấp nhận mọi phương thức thanh toán an toàn, bảo mật mã hóa SSL
+              256-bit chuẩn quốc tế.
+            </p>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 20px;
+              "
+            >
+              <span
+                style="
+                  background: #1e293b;
+                  border: 1px solid #334155;
+                  color: #fff;
+                  font-size: 11px;
+                  font-weight: 700;
+                  padding: 6px 12px;
+                  border-radius: 6px;
+                "
+                >VISA</span
+              >
+              <span
+                style="
+                  background: #1e293b;
+                  border: 1px solid #334155;
+                  color: #fff;
+                  font-size: 11px;
+                  font-weight: 700;
+                  padding: 6px 12px;
+                  border-radius: 6px;
+                "
+                >MASTERCARD</span
+              >
+              <span
+                style="
+                  background: #1e293b;
+                  border: 1px solid #334155;
+                  color: #fff;
+                  font-size: 11px;
+                  font-weight: 700;
+                  padding: 6px 12px;
+                  border-radius: 6px;
+                "
+                >APPLE PAY</span
+              >
+              <span
+                style="
+                  background: #1e293b;
+                  border: 1px solid #334155;
+                  color: #fff;
+                  font-size: 11px;
+                  font-weight: 700;
+                  padding: 6px 12px;
+                  border-radius: 6px;
+                "
+                >VNPAY-QR</span
+              >
+            </div>
+            <h4>Kết Nối Với Chúng Tôi</h4>
+            <div style="display: flex; gap: 10px; margin-top: 8px">
+              <a
+                href="#"
+                style="
+                  width: 34px;
+                  height: 34px;
+                  border-radius: 50%;
+                  background: #1e293b;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #fff;
+                  font-size: 12px;
+                  font-weight: 700;
+                "
+                title="Facebook"
+                >FB</a
+              >
+              <a
+                href="#"
+                style="
+                  width: 34px;
+                  height: 34px;
+                  border-radius: 50%;
+                  background: #1e293b;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #fff;
+                  font-size: 12px;
+                  font-weight: 700;
+                "
+                title="Instagram"
+                >IG</a
+              >
+              <a
+                href="#"
+                style="
+                  width: 34px;
+                  height: 34px;
+                  border-radius: 50%;
+                  background: #1e293b;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #fff;
+                  font-size: 12px;
+                  font-weight: 700;
+                "
+                title="YouTube"
+                >YT</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Dải Bottom Copyright -->
+        <div class="footer-bottom">
+          <div>
+            © 2025 JML STORE VIETNAM. Bản quyền thuộc về Công ty Cổ phần Thương
+            Mại JML Store.
+          </div>
+          <div style="display: flex; gap: 20px">
+            <a href="#" style="color: #64748b">Quyền riêng tư</a>
+            <a href="#" style="color: #64748b">Điều khoản dịch vụ</a>
+            <a href="#" style="color: #64748b">Chứng nhận an toàn SSL</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
