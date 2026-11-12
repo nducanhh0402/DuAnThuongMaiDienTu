@@ -2116,11 +2116,11 @@
               </div>
               <a
                 href="#"
-                onclick="
-                  showToast('Hồ sơ', 'Mở trang hồ sơ cá nhân');
-                  return false;
-                "
-                onclick="showToast('Hồ sơ', 'Mở trang hồ sơ cá nhân'); return false;"
+ feature-tranhuy-profile
+                onclick="showUserProfileView(); return false;"
+
+
+ develop
                 style="
                   display: flex;
                   align-items: center;
@@ -2706,6 +2706,214 @@
         <!-- Rendered dynamically by openProductDetail(id) -->
       </div>
     </main>
+    <!-- CSS Bổ Sung Cho Trang Cá Nhân -->
+      <style>
+        .profile-tab-btn {
+          width: 100%;
+          text-align: left;
+          padding: 12px 14px;
+          border-radius: var(--radius-sm);
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--text-muted);
+          transition: var(--transition);
+          margin-bottom: 4px;
+        }
+        .profile-tab-btn:hover {
+          background: var(--surface-dim);
+          color: var(--primary);
+        }
+        .profile-tab-btn.active {
+          background: var(--primary-light);
+          color: var(--primary);
+          font-weight: 700;
+        }
+        .profile-pane {
+          display: none;
+        }
+        .profile-pane.active {
+          display: block;
+        }
+      </style>
+
+      <!-- SPA VIEW 3: TRANG CÁ NHÂN KHÁCH HÀNG (USER PROFILE VIEW) -->
+      <div id="view-user-profile" class="spa-section">
+        <div style="padding: 24px 0 60px;">
+          
+          <!-- Nút Quay Lại -->
+          <div style="margin-bottom: 20px;">
+            <button class="btn-back-home" onclick="showHomeView()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Quay Lại Trang Chủ
+            </button>
+          </div>
+
+          <!-- Thẻ Thông Tin Rank & Xu -->
+          <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: var(--radius-lg); padding: 24px; color: #fff; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ea580c, #c2410c); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; color: #fff;">AD</div>
+              <div>
+                <div style="font-size: 20px; font-weight: 800;">Trần Huy</div>
+                <div style="font-size: 13px; color: #94a3b8; display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                  <span style="background: #f59e0b; color: #000; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 11px;">RANK: GOLD MEMBER</span>
+                  <span>• Khách hàng thân thiết</span>
+                </div>
+              </div>
+            </div>
+            
+            <div style="display: flex; gap: 24px; background: rgba(255,255,255,0.08); padding: 12px 24px; border-radius: var(--radius-md);">
+              <div style="text-align: center;">
+                <div style="font-size: 12px; color: #94a3b8;">Ví Xu JML</div>
+                <div style="font-size: 20px; font-weight: 800; color: #fdba74;">💰 1,250 Xu</div>
+              </div>
+              <div style="width: 1px; background: rgba(255,255,255,0.15);"></div>
+              <div style="text-align: center;">
+                <div style="font-size: 12px; color: #94a3b8;">Đơn hoàn thành</div>
+                <div style="font-size: 20px; font-weight: 800; color: #34d399;">12 Đơn</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bố Cục Tab Trái & Nội Dung Phải -->
+          <div style="display: grid; grid-template-columns: 260px 1fr; gap: 24px;">
+            
+            <!-- Menu Trái -->
+            <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px; height: fit-content;">
+              <button class="profile-tab-btn active" onclick="switchProfileTab('profile-info', this)">
+                👤 Cài Đặt Tài Khoản
+              </button>
+              <button class="profile-tab-btn" onclick="switchProfileTab('profile-orders', this)">
+                📦 Trạng Thái Đơn Hàng
+              </button>
+              <button class="profile-tab-btn" onclick="switchProfileTab('profile-history', this)">
+                📜 Lịch Sử Mua Hàng
+              </button>
+            </div>
+
+            <!-- Nội Dung Bên Phải -->
+            <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px;">
+              
+              <!-- Tab 1: Cài Đặt (Gmail, SĐT, Địa chỉ) -->
+              <div id="profile-info" class="profile-pane active">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Thông Tin Cá Nhân</h3>
+                <form onsubmit="event.preventDefault(); saveUserProfile();" style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
+                  <div>
+                    <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px;">Họ và Tên:</label>
+                    <input type="text" id="userProfileName" value="Trần Huy" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; outline: none;">
+                  </div>
+                  <div>
+                    <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px;">Địa chỉ Gmail:</label>
+                    <input type="email" id="userProfileEmail" value="tranhuy@gmail.com" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; outline: none;">
+                  </div>
+                  <div>
+                    <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px;">Số Điện Thoại:</label>
+                    <input type="text" id="userProfilePhone" value="0987 654 321" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; outline: none;">
+                  </div>
+                  <div>
+                    <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px;">Địa Chỉ Giao Hàng:</label>
+                    <textarea id="userProfileAddress" rows="3" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; outline: none; font-family: inherit;">Tòa nhà Discovery Complex, Cầu Giấy, Hà Nội</textarea>
+                  </div>
+                  <button type="submit" style="background: var(--primary); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; width: fit-content;">
+                    Cập Nhật Thông Tin
+                  </button>
+                </form>
+              </div>
+
+              <!-- Tab 2: Trạng Thái Đơn Hàng -->
+              <div id="profile-orders" class="profile-pane">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Trạng Thái Đơn Hàng Đang Giao</h3>
+                
+                <div style="border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 14px;">
+                  <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px;">
+                    <strong>Mã đơn: #JML-8891</strong>
+                    <span style="color: var(--primary); font-weight: 700;">🚚 Đang giao hàng</span>
+                  </div>
+                  <div style="font-size: 14px; color: var(--text-main);">Tai Nghe Chống Ồn Sony WH-1000XM5</div>
+                  <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Dự kiến giao: 17:00 Hôm nay</div>
+                </div>
+
+                <div style="border: 1px solid var(--border); border-radius: 8px; padding: 16px;">
+                  <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px;">
+                    <strong>Mã đơn: #JML-7720</strong>
+                    <span style="color: #f59e0b; font-weight: 700;">⏳ Đang đóng gói</span>
+                  </div>
+                  <div style="font-size: 14px; color: var(--text-main);">Ví Da Nam Cầm Tay Epsom Đen</div>
+                  <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Đã xác nhận thanh toán</div>
+                </div>
+              </div>
+
+              <!-- Tab 3: Lịch Sử Mua Hàng -->
+              <div id="profile-history" class="profile-pane">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Lịch Sử Mua Hàng</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                  <thead>
+                    <tr style="background: var(--surface-dim); text-align: left;">
+                      <th style="padding: 10px;">Mã Đơn</th>
+                      <th style="padding: 10px;">Ngày Mua</th>
+                      <th style="padding: 10px;">Sản Phẩm</th>
+                      <th style="padding: 10px;">Tổng Tiền</th>
+                      <th style="padding: 10px;">Trạng Thái</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 10px;">#JML-5102</td>
+                      <td style="padding: 10px;">12/10/2026</td>
+                      <td style="padding: 10px;">Chuột Logitech MX Master 3S</td>
+                      <td style="padding: 10px; font-weight: 700;">2.190.000 ₫</td>
+                      <td style="padding: 10px; color: var(--success); font-weight: 600;">Hoàn thành</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 10px;">#JML-4390</td>
+                      <td style="padding: 10px;">01/09/2026</td>
+                      <td style="padding: 10px;">Loa Marshall Emberton II</td>
+                      <td style="padding: 10px; font-weight: 700;">3.950.000 ₫</td>
+                      <td style="padding: 10px; color: var(--success); font-weight: 600;">Hoàn thành</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- JavaScript Xử Lý Trang Cá Nhân -->
+      <script>
+        function showUserProfileView() {
+          const detailContainer = document.getElementById("view-product-detail");
+          const homeContainer = document.getElementById("view-home");
+          const profileContainer = document.getElementById("view-user-profile");
+
+          if (detailContainer) detailContainer.classList.remove("active");
+          if (homeContainer) homeContainer.classList.remove("active");
+          if (profileContainer) profileContainer.classList.add("active");
+
+          if (typeof closeAllDropdowns === 'function') closeAllDropdowns();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function switchProfileTab(paneId, btn) {
+          document.querySelectorAll(".profile-tab-btn").forEach((b) => b.classList.remove("active"));
+          document.querySelectorAll(".profile-pane").forEach((p) => p.classList.remove("active"));
+          
+          btn.classList.add("active");
+          const pane = document.getElementById(paneId);
+          if (pane) pane.classList.add("active");
+        }
+
+        function saveUserProfile() {
+          const name = document.getElementById("userProfileName").value;
+          if (typeof showToast === 'function') {
+            showToast("Thành công", `Đã lưu cập nhật cho tài khoản ${name}`);
+          } else {
+            alert(`Đã lưu cập nhật cho tài khoản ${name}`);
+          }
+        }
+      </script>
 
     <!-- Toast Notification Container -->
     <div class="toast-container" id="toastContainer"></div>
