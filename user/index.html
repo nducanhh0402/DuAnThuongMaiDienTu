@@ -1,0 +1,3231 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>JML Store - Sàn Thương Mại Điện Tử Hàng Đầu | Trang Chủ</title>
+    <link rel="icon" type="image/svg+xml" href="jml-store-icon.svg" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ==========================================================================
+         1. RESET & CSS VARIABLES
+         ========================================================================== */
+      :root {
+        --primary: #ea580c;
+        --primary-hover: #c2410c;
+        --primary-light: #ffedd5;
+        --primary-gradient: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+        --secondary: #0f172a;
+        --secondary-light: #334155;
+        --accent: #f97316;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #f8fafc;
+        --surface: #ffffff;
+        --surface-dim: #f1f5f9;
+        --border: #e2e8f0;
+        --border-hover: #cbd5e1;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --text-light: #94a3b8;
+        --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+        --shadow-lg: 0 16px 36px rgba(15, 23, 42, 0.12);
+        --shadow-hover: 0 12px 28px rgba(234, 88, 12, 0.15);
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+        --radius-xl: 24px;
+        --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        --font-main: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-main);
+        background-color: var(--background);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      button {
+        font-family: inherit;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background: transparent;
+        transition: var(--transition);
+      }
+
+      .container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ==========================================================================
+         2. TOP BAR & ANNOUNCEMENT
+         ========================================================================== */
+      .top-bar {
+        background: #0b1120;
+        color: #94a3b8;
+        font-size: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 8px 0;
+      }
+
+      .top-bar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .top-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .top-badge {
+        background: rgba(234, 88, 12, 0.18);
+        color: #fdba74;
+        padding: 2px 8px;
+        border-radius: 99px;
+        font-weight: 700;
+        font-size: 11px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .top-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .top-right a:hover {
+        color: #ffffff;
+      }
+
+      .top-sep {
+        opacity: 0.25;
+      }
+
+      /* ==========================================================================
+         3. MAIN HEADER & NAVBAR
+         ========================================================================== */
+      .header-main {
+        background: #ffffff;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-xs);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        gap: 28px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        font-size: 22px;
+        color: var(--secondary);
+        letter-spacing: -0.5px;
+        flex-shrink: 0;
+      }
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-badge {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        padding: 3px 9px;
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .logo-text {
+        font-weight: 800;
+        color: var(--secondary);
+      }
+
+      /* Search Bar */
+      .search-box-wrapper {
+        flex: 1;
+        max-width: 620px;
+        position: relative;
+      }
+
+      .search-form {
+        display: flex;
+        align-items: center;
+        background: var(--surface-dim);
+        border: 2px solid transparent;
+        border-radius: var(--radius-md);
+        padding: 4px 6px 4px 14px;
+        transition: var(--transition);
+      }
+
+      .search-form:focus-within {
+        background: #ffffff;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+      }
+
+      .search-icon-svg {
+        color: var(--text-muted);
+        flex-shrink: 0;
+        margin-right: 8px;
+      }
+
+      .search-input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 14px;
+        color: var(--text-main);
+        font-family: inherit;
+      }
+
+      .search-input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .search-btn {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        padding: 8px 18px;
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .search-btn:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+      }
+
+      .search-quick-tags {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-top: 5px;
+        padding-left: 4px;
+      }
+
+      .search-quick-tags a {
+        color: var(--text-muted);
+      }
+
+      .search-quick-tags a:hover {
+        color: var(--primary);
+        text-decoration: underline;
+      }
+
+      /* Header Actions */
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .btn-header-action {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: var(--radius-md);
+        color: var(--secondary);
+        font-size: 13px;
+        font-weight: 600;
+        position: relative;
+      }
+
+      .btn-header-action:hover {
+        background: var(--surface-dim);
+        color: var(--primary);
+      }
+
+      .action-badge {
+        position: absolute;
+        top: 2px;
+        right: 4px;
+        background: var(--primary);
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 800;
+        height: 18px;
+        min-width: 18px;
+        line-height: 18px;
+        border-radius: 99px;
+        text-align: center;
+        padding: 0 4px;
+        border: 2px solid #ffffff;
+      }
+
+      .btn-user-login {
+        background: var(--surface-dim);
+        border: 1px solid var(--border);
+        color: var(--secondary);
+        padding: 8px 14px;
+        border-radius: var(--radius-md);
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-user-login:hover {
+        background: var(--primary);
+        color: #ffffff;
+        border-color: var(--primary);
+      }
+
+      /* Sub Navigation Bar */
+      .nav-bar {
+        background: #ffffff;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-categories-btn {
+        background: var(--primary);
+        color: #ffffff;
+        padding: 12px 20px;
+        font-weight: 700;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        letter-spacing: 0.3px;
+      }
+
+      .nav-categories-btn:hover {
+        background: var(--primary-hover);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        display: inline-block;
+        padding: 12px 4px;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--secondary-light);
+        position: relative;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--primary);
+      }
+
+      .nav-links a.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 2px 2px 0 0;
+      }
+
+      .nav-hot-badge {
+        background: #ef4444;
+        color: #fff;
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 99px;
+        margin-left: 4px;
+        font-weight: 800;
+        text-transform: uppercase;
+        animation: pulseBadge 1.8s infinite;
+      }
+
+      @keyframes pulseBadge {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.08); opacity: 0.85; }
+      }
+
+      .nav-support {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      /* ==========================================================================
+         4. HERO BANNER SECTION (MAIN SLIDER + SIDE BANNERS)
+         ========================================================================== */
+      .hero-section {
+        padding: 24px 0 32px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 2.3fr 1fr;
+        gap: 20px;
+      }
+
+      /* Main Slider */
+      .main-slider {
+        position: relative;
+        height: 410px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        background: #1e293b;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(1.02);
+        display: flex;
+        align-items: center;
+        padding: 0 54px;
+        color: #ffffff;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .slide::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.45) 60%, rgba(15, 23, 42, 0.15) 100%);
+        z-index: 1;
+      }
+
+      .slide.active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+      }
+
+      .slide-1 {
+        background-image: url('https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1200&q=80');
+      }
+
+      .slide-2 {
+        background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80');
+      }
+
+      .slide-3 {
+        background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80');
+      }
+
+      .slide-content {
+        position: relative;
+        z-index: 2;
+        max-width: 500px;
+      }
+
+      .slide-tag {
+        display: inline-block;
+        padding: 4px 14px;
+        background: rgba(234, 88, 12, 0.3);
+        border: 1px solid rgba(253, 186, 116, 0.4);
+        backdrop-filter: blur(8px);
+        border-radius: 99px;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        letter-spacing: 1.2px;
+        color: #fed7aa;
+      }
+
+      .slide-title {
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 14px;
+        letter-spacing: -0.5px;
+      }
+
+      .slide-desc {
+        font-size: 14.5px;
+        color: #e2e8f0;
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
+
+      .slide-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .btn-hero-primary {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        padding: 12px 26px;
+        border-radius: var(--radius-md);
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+      }
+
+      .btn-hero-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(234, 88, 12, 0.45);
+      }
+
+      .btn-hero-outline {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(6px);
+        padding: 12px 22px;
+        border-radius: var(--radius-md);
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .btn-hero-outline:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: #ffffff;
+      }
+
+      /* Slider Controls */
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        background: rgba(15, 23, 42, 0.55);
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .slider-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .slider-prev { left: 16px; }
+      .slider-next { right: 16px; }
+
+      .slider-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+      }
+
+      .slider-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .slider-dot.active {
+        width: 28px;
+        background: var(--primary);
+      }
+
+      /* Side Banners */
+      .side-banners {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .side-banner-card {
+        flex: 1;
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        color: #ffffff;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        background-size: cover;
+        background-position: center;
+      }
+
+      .side-banner-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.88) 100%);
+        z-index: 1;
+        transition: var(--transition);
+      }
+
+      .side-banner-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .side-banner-card:hover::before {
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.95) 100%);
+      }
+
+      .side-banner-1 {
+        background-image: url('https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80');
+      }
+
+      .side-banner-2 {
+        background-image: url('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80');
+      }
+
+      .side-banner-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .side-banner-tag {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fdba74;
+        letter-spacing: 0.8px;
+        margin-bottom: 6px;
+      }
+
+      .side-banner-title {
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1.35;
+        margin-bottom: 8px;
+      }
+
+      .side-banner-link {
+        font-size: 13px;
+        font-weight: 700;
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .side-banner-link:hover {
+        color: var(--primary-light);
+        gap: 10px;
+      }
+
+      /* ==========================================================================
+         5. VALUE PROPOSITION / FEATURES BAR
+         ========================================================================== */
+      .features-section {
+        margin-bottom: 40px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        background: #ffffff;
+        padding: 24px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border);
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .feature-icon-box {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-md);
+        background: var(--primary-light);
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .feature-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--secondary);
+        margin-bottom: 2px;
+      }
+
+      .feature-desc {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* ==========================================================================
+         6. LƯỚI DANH MỤC (CATEGORY GRID)
+         ========================================================================== */
+      .section-heading-row {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+
+      .section-title-box {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .section-badge {
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .section-title {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--secondary);
+        letter-spacing: -0.5px;
+      }
+
+      .section-view-all {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .section-view-all:hover {
+        gap: 10px;
+        color: var(--primary-hover);
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 14px;
+        margin-bottom: 48px;
+      }
+
+      .category-card {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 20px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: var(--transition);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .category-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--primary-gradient);
+        transform: scaleX(0);
+        transition: var(--transition);
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-color: #fdba74;
+      }
+
+      .category-card:hover::after {
+        transform: scaleX(1);
+      }
+
+      .category-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--surface-dim);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin-bottom: 12px;
+        transition: var(--transition);
+      }
+
+      .category-card:hover .category-icon-wrapper {
+        background: var(--primary-light);
+        transform: scale(1.1);
+      }
+
+      .category-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--secondary);
+        line-height: 1.35;
+        margin-bottom: 4px;
+      }
+
+      .category-count {
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      /* ==========================================================================
+         7. FLASH SALE SECTION
+         ========================================================================== */
+      .flash-sale-box {
+        background: linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #431407 100%);
+        border-radius: var(--radius-xl);
+        padding: 30px;
+        margin-bottom: 48px;
+        color: #ffffff;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .flash-sale-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding-bottom: 18px;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .flash-title-area {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .flash-tag {
+        background: #ef4444;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 6px 14px;
+        border-radius: 99px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .flash-title-text {
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .countdown-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #cbd5e1;
+      }
+
+      .timer-box {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .timer-unit {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 16px;
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .timer-colon {
+        font-weight: 800;
+        color: #fdba74;
+      }
+
+      .flash-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      /* Flash Sale Card */
+      .flash-card {
+        background: #ffffff;
+        border-radius: var(--radius-md);
+        padding: 16px;
+        color: var(--text-main);
+        transition: var(--transition);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flash-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+      }
+
+      .flash-img-box {
+        position: relative;
+        height: 190px;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        margin-bottom: 14px;
+        background: #f1f5f9;
+      }
+
+      .flash-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .flash-card:hover .flash-img-box img {
+        transform: scale(1.06);
+      }
+
+      .discount-ribbon {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: #ef4444;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 99px;
+      }
+
+      .flash-prod-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--secondary);
+        margin-bottom: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 40px;
+        line-height: 1.4;
+      }
+
+      .flash-price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .current-price {
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--primary);
+      }
+
+      .old-price {
+        font-size: 12.5px;
+        color: var(--text-light);
+        text-decoration: line-through;
+      }
+
+      /* Progress Bar */
+      .deal-progress-box {
+        margin-top: auto;
+      }
+
+      .progress-track {
+        height: 7px;
+        background: #e2e8f0;
+        border-radius: 99px;
+        overflow: hidden;
+        margin-bottom: 6px;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #ea580c, #ef4444);
+        border-radius: 99px;
+      }
+
+      .deal-sold-text {
+        font-size: 11.5px;
+        color: var(--text-muted);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* ==========================================================================
+         8. LƯỚI SẢN PHẨM NỔI BẬT (FEATURED PRODUCTS GRID)
+         ========================================================================== */
+      .featured-section {
+        margin-bottom: 56px;
+      }
+
+      .filter-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        padding: 8px 18px;
+        border-radius: 99px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--secondary-light);
+      }
+
+      .tab-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .tab-btn.active {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .product-card {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-color: #fdba74;
+      }
+
+      .product-thumb {
+        position: relative;
+        height: 220px;
+        background: #f8fafc;
+        overflow: hidden;
+      }
+
+      .product-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .product-card:hover .product-thumb img {
+        transform: scale(1.05);
+      }
+
+      .badge-group {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        z-index: 2;
+      }
+
+      .prod-badge {
+        font-size: 11px;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: var(--radius-sm);
+        text-transform: uppercase;
+      }
+
+      .badge-discount {
+        background: #ef4444;
+        color: #ffffff;
+      }
+
+      .badge-hot {
+        background: var(--primary);
+        color: #ffffff;
+      }
+
+      .badge-new {
+        background: #10b981;
+        color: #ffffff;
+      }
+
+      .btn-wishlist {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(4px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        z-index: 2;
+        box-shadow: var(--shadow-xs);
+      }
+
+      .btn-wishlist:hover {
+        background: #ffffff;
+        color: #ef4444;
+        transform: scale(1.1);
+      }
+
+      .btn-wishlist.active {
+        color: #ef4444;
+        background: #ffffff;
+      }
+
+      .product-body {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .product-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 11.5px;
+        color: var(--text-muted);
+        margin-bottom: 6px;
+      }
+
+      .product-category {
+        font-weight: 600;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .product-title {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--secondary);
+        line-height: 1.4;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 40px;
+      }
+
+      .product-title a:hover {
+        color: var(--primary);
+      }
+
+      .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        margin-bottom: 12px;
+      }
+
+      .stars {
+        color: #f59e0b;
+        letter-spacing: -1px;
+      }
+
+      .rating-count {
+        color: var(--text-muted);
+        font-size: 11px;
+      }
+
+      .product-pricing {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 16px;
+        margin-top: auto;
+      }
+
+      .product-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-add-cart {
+        flex: 1;
+        background: var(--surface-dim);
+        border: 1px solid var(--border);
+        color: var(--secondary);
+        padding: 10px 14px;
+        border-radius: var(--radius-md);
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .btn-add-cart:hover {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+      }
+
+      .btn-quick-view {
+        width: 38px;
+        height: 38px;
+        background: var(--surface-dim);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--secondary);
+      }
+
+      .btn-quick-view:hover {
+        background: #ffffff;
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      /* View More Button */
+      .view-more-box {
+        text-align: center;
+        margin-top: 36px;
+      }
+
+      .btn-view-more {
+        background: #ffffff;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+        padding: 12px 36px;
+        border-radius: 99px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-view-more:hover {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        box-shadow: 0 6px 18px rgba(234, 88, 12, 0.3);
+      }
+
+      /* ==========================================================================
+         9. PROMO BANNER STRIP (VOUCHER / CALL TO ACTION)
+         ========================================================================== */
+      .promo-strip {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        border-radius: var(--radius-xl);
+        padding: 36px 48px;
+        margin-bottom: 56px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .promo-strip::before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 250px;
+        height: 250px;
+        background: radial-gradient(circle, rgba(234, 88, 12, 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .promo-left {
+        max-width: 600px;
+      }
+
+      .promo-tag {
+        font-size: 12px;
+        font-weight: 800;
+        color: #fdba74;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .promo-heading {
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1.3;
+        margin-bottom: 10px;
+      }
+
+      .promo-sub {
+        font-size: 14.5px;
+        color: #cbd5e1;
+      }
+
+      .promo-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .voucher-code-badge {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px dashed #fdba74;
+        padding: 10px 20px;
+        border-radius: var(--radius-md);
+        font-family: monospace;
+        font-size: 18px;
+        font-weight: 800;
+        color: #fdba74;
+        letter-spacing: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-copy-code {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        padding: 12px 22px;
+        border-radius: var(--radius-md);
+        font-size: 13.5px;
+        font-weight: 700;
+      }
+
+      .btn-copy-code:hover {
+        background: var(--primary-hover);
+      }
+
+      /* ==========================================================================
+         10. REVIEWS & TESTIMONIALS
+         ========================================================================== */
+      .testimonials-section {
+        margin-bottom: 60px;
+      }
+
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .review-card {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .review-author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .author-avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .author-info h4 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--secondary);
+      }
+
+      .author-info span {
+        font-size: 12px;
+        color: #10b981;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .review-stars {
+        color: #f59e0b;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .review-text {
+        font-size: 13.5px;
+        color: var(--secondary-light);
+        line-height: 1.6;
+      }
+
+      /* ==========================================================================
+         11. FOOTER
+         ========================================================================== */
+      footer {
+        background: #0b1120;
+        color: #94a3b8;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      /* Newsletter Strip */
+      .newsletter-bar {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 32px 0;
+      }
+
+      .newsletter-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .newsletter-text h3 {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+
+      .newsletter-text p {
+        font-size: 13.5px;
+        color: #94a3b8;
+      }
+
+      .newsletter-form {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        max-width: 480px;
+      }
+
+      .newsletter-input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius-md);
+        padding: 12px 18px;
+        color: #ffffff;
+        font-size: 13.5px;
+        outline: none;
+      }
+
+      .newsletter-input:focus {
+        border-color: var(--primary);
+      }
+
+      .newsletter-btn {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        padding: 12px 24px;
+        border-radius: var(--radius-md);
+        font-weight: 700;
+        font-size: 13.5px;
+        flex-shrink: 0;
+      }
+
+      .newsletter-btn:hover {
+        background: var(--primary-hover);
+      }
+
+      /* Main Footer Grid */
+      .footer-main {
+        padding: 56px 0 40px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1.2fr 1.2fr 1.4fr;
+        gap: 36px;
+      }
+
+      .footer-col-brand .logo {
+        color: #ffffff;
+        margin-bottom: 16px;
+      }
+
+      .brand-desc {
+        font-size: 13.5px;
+        line-height: 1.65;
+        color: #94a3b8;
+        margin-bottom: 20px;
+      }
+
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 13px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .contact-item strong {
+        color: #ffffff;
+      }
+
+      .footer-title {
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 800;
+        margin-bottom: 18px;
+        letter-spacing: -0.2px;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .footer-links a {
+        font-size: 13.5px;
+        color: #94a3b8;
+      }
+
+      .footer-links a:hover {
+        color: #ffffff;
+        padding-left: 4px;
+      }
+
+      .payment-methods {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 22px;
+      }
+
+      .pay-badge {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #e2e8f0;
+        padding: 6px 12px;
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 10px;
+      }
+
+      .social-btn {
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+      }
+
+      .social-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      /* Bottom Bar */
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 22px 0;
+        font-size: 12.5px;
+      }
+
+      .footer-bottom-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* ==========================================================================
+         12. TOAST & MODAL NOTIFICATIONS
+         ========================================================================== */
+      .toast-box {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: #0f172a;
+        color: #ffffff;
+        padding: 14px 22px;
+        border-radius: var(--radius-md);
+        font-size: 13.5px;
+        font-weight: 600;
+        box-shadow: var(--shadow-lg);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 9999;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 4px solid var(--primary);
+      }
+
+      .toast-box.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Back to Top */
+      .back-to-top {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        background: var(--primary-gradient);
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-md);
+        z-index: 900;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-3px);
+      }
+
+      /* Quick View Modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        padding: 20px;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-box {
+        background: #ffffff;
+        border-radius: var(--radius-xl);
+        max-width: 780px;
+        width: 100%;
+        padding: 28px;
+        position: relative;
+        box-shadow: var(--shadow-lg);
+        transform: scale(0.95);
+        transition: var(--transition);
+      }
+
+      .modal-overlay.active .modal-box {
+        transform: scale(1);
+      }
+
+      .modal-close-btn {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--surface-dim);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: var(--secondary);
+      }
+
+      .modal-close-btn:hover {
+        background: #ef4444;
+        color: #ffffff;
+      }
+
+      .modal-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1.3fr;
+        gap: 28px;
+      }
+
+      .modal-img-box {
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: #f8fafc;
+        height: 320px;
+      }
+
+      .modal-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ==========================================================================
+         13. RESPONSIVE DESIGN (MEDIA QUERIES)
+         ========================================================================== */
+      @media (max-width: 1024px) {
+        .hero-grid { grid-template-columns: 1fr; }
+        .main-slider { height: 350px; }
+        .side-banners { flex-direction: row; }
+        .category-grid { grid-template-columns: repeat(4, 1fr); }
+        .flash-grid { grid-template-columns: repeat(2, 1fr); }
+        .products-grid { grid-template-columns: repeat(2, 1fr); }
+        .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        .features-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      @media (max-width: 768px) {
+        .top-bar { display: none; }
+        .header-inner { flex-wrap: wrap; gap: 14px; }
+        .search-box-wrapper { order: 3; max-width: 100%; width: 100%; }
+        .nav-links { display: none; }
+        .side-banners { flex-direction: column; }
+        .slide { padding: 0 24px; }
+        .slide-title { font-size: 26px; }
+        .category-grid { grid-template-columns: repeat(2, 1fr); }
+        .features-grid { grid-template-columns: 1fr; }
+        .promo-strip { flex-direction: column; text-align: center; gap: 20px; padding: 24px; }
+        .promo-right { flex-direction: column; width: 100%; }
+        .voucher-code-badge { width: 100%; justify-content: center; }
+        .reviews-grid { grid-template-columns: 1fr; }
+        .footer-grid { grid-template-columns: 1fr; }
+        .newsletter-inner { flex-direction: column; align-items: stretch; }
+        .newsletter-form { max-width: 100%; }
+        .modal-grid { grid-template-columns: 1fr; }
+        .modal-img-box { height: 220px; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+      <div class="container top-bar-inner">
+        <div class="top-left">
+          <span class="top-badge">✨ CHÍNH HÃNG 100%</span>
+          <span>JML Store - Hệ thống phân phối công nghệ & phong cách sống hàng đầu</span>
+        </div>
+        <div class="top-right">
+          <span>Hotline: <strong style="color: #ffffff">1900 8888</strong> (24/7)</span>
+          <span class="top-sep">|</span>
+          <a href="#" onclick="showToast('Chăm sóc khách hàng 24/7 luôn sẵn sàng hỗ trợ!')">Trợ Giúp</a>
+          <span class="top-sep">|</span>
+          <a href="products.html">Tất Cả Sản Phẩm</a>
+          <span class="top-sep">|</span>
+          <a href="#" onclick="openUserModal()">Đăng Nhập / Đăng Ký</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="header-main">
+      <div class="container header-inner">
+        <!-- Logo -->
+        <a class="logo" href="index.html" title="JML Store - Trang Chủ">
+          <div class="logo-icon">
+            <img src="jml-store-icon.svg" alt="JML Store Logo" style="width: 38px; height: 38px;" onerror="this.style.display='none'" />
+          </div>
+          <span class="logo-badge">JML</span>
+          <span class="logo-text">STORE</span>
+        </a>
+
+        <!-- Search Bar with Quick Tags -->
+        <div class="search-box-wrapper">
+          <form class="search-form" onsubmit="handleSearch(event)">
+            <svg class="search-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="Tìm kiếm tai nghe, điện thoại, laptop, đồng hồ chính hãng..."
+            />
+            <button class="search-btn" type="submit">
+              <span>Tìm kiếm</span>
+            </button>
+          </form>
+          <div class="search-quick-tags">
+            <span>Gợi ý:</span>
+            <a href="products.html?q=sony">Tai nghe Sony</a>
+            <a href="products.html?q=apple">iPhone 16 Pro</a>
+            <a href="products.html?q=macbook">MacBook M3</a>
+            <a href="products.html?q=watch">Đồng hồ Thụy Sĩ</a>
+            <a href="products.html?q=jordan">Nike Jordan</a>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <!-- Wishlist -->
+          <button class="btn-header-action" onclick="showToast('Danh sách yêu thích đang cập nhật!')" title="Sản phẩm yêu thích">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="action-badge" id="wishlistCount">3</span>
+          </button>
+
+          <!-- Cart Button -->
+          <button class="btn-header-action" onclick="toggleCartDrawer()" title="Giỏ hàng">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="action-badge" id="cartBadge">2</span>
+          </button>
+
+          <!-- User Account -->
+          <button class="btn-user-login" onclick="openUserModal()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Tài Khoản</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub Navigation Bar -->
+    <nav class="nav-bar">
+      <div class="container nav-inner">
+        <a href="#categories" class="nav-categories-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <span>TẤT CẢ DANH MỤC</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Trang Chủ</a></li>
+          <li><a href="products.html">Sản Phẩm</a></li>
+          <li><a href="#flash-sale">Flash Sale <span class="nav-hot-badge">HOT</span></a></li>
+          <li><a href="#featured">Sản Phẩm Nổi Bật</a></li>
+          <li><a href="#promo">Ưu Đãi Đặc Quyền</a></li>
+          <li><a href="#reviews">Đánh Giá</a></li>
+          <li><a href="#footer">Liên Hệ</a></li>
+        </ul>
+
+        <div class="nav-support">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span>Hotline: 1900 8888</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- ====================================================================
+           1. HERO BANNER SECTION (MAIN SLIDER + 2 SUB-BANNERS)
+           ==================================================================== -->
+      <section class="hero-section">
+        <div class="hero-grid">
+          <!-- Main Interactive Carousel Slider -->
+          <div class="main-slider" id="mainSlider">
+            <!-- Slide 1: Audio & Tech -->
+            <div class="slide slide-1 active">
+              <div class="slide-content">
+                <span class="slide-tag">🔥 SIÊU SALE CÔNG NGHỆ 2026</span>
+                <h1 class="slide-title">Trải Nghiệm Đỉnh Cao Âm Thanh Studio</h1>
+                <p class="slide-desc">
+                  Thưởng thức âm thanh chuẩn Hi-Res Audio với tai nghe chống ồn chủ động cao cấp. Giảm ngay 35% duy nhất tuần này!
+                </p>
+                <div class="slide-actions">
+                  <a href="#featured" class="btn-hero-primary">
+                    Khám Phá Ngay
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </a>
+                  <a href="products.html" class="btn-hero-outline">Xem Danh Mục</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: Luxury Watches -->
+            <div class="slide slide-2">
+              <div class="slide-content">
+                <span class="slide-tag">⌚ ĐỒNG HỒ TINH HOA THỤY SĨ</span>
+                <h2 class="slide-title">Khẳng Định Đẳng Cấp & Thời Khắc Sang Trọng</h2>
+                <p class="slide-desc">
+                  Bộ sưu tập đồng hồ cơ Automatic Chronograph phiên bản giới hạn. Kính Sapphire chống trầy, bảo hành quốc tế 5 năm.
+                </p>
+                <div class="slide-actions">
+                  <a href="#featured" class="btn-hero-primary">
+                    Xem Bộ Sưu Tập
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </a>
+                  <a href="products.html" class="btn-hero-outline">Tìm Hiểu Thêm</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Fashion -->
+            <div class="slide slide-3">
+              <div class="slide-content">
+                <span class="slide-tag">✨ TUẦN LỄ THỜI TRANG 2026</span>
+                <h2 class="slide-title">Phong Cách Thời Thượng Dẫn Đầu Xu Hướng</h2>
+                <p class="slide-desc">
+                  Áo măng tô dạ lông cừu, vest may đo và phụ kiện da cao cấp phong cách châu Âu. Ưu đãi độc quyền giảm tới 40%!
+                </p>
+                <div class="slide-actions">
+                  <a href="#featured" class="btn-hero-primary">
+                    Săn Deal Ngay
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </a>
+                  <a href="products.html" class="btn-hero-outline">Xem Tất Cả</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slider Navigation Buttons -->
+            <button class="slider-btn slider-prev" onclick="changeSlide(-1)" aria-label="Slide trước">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="slider-btn slider-next" onclick="changeSlide(1)" aria-label="Slide tiếp theo">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+
+            <!-- Slider Indicators -->
+            <div class="slider-dots" id="sliderDots">
+              <div class="slider-dot active" onclick="setSlide(0)"></div>
+              <div class="slider-dot" onclick="setSlide(1)"></div>
+              <div class="slider-dot" onclick="setSlide(2)"></div>
+            </div>
+          </div>
+
+          <!-- 2 Sub-Banners -->
+          <div class="side-banners">
+            <div class="side-banner-card side-banner-1">
+              <div class="side-banner-content">
+                <span class="side-banner-tag">BST SNEAKER RETRO</span>
+                <h3 class="side-banner-title">Phong Cách Đường Phố Đột Phá</h3>
+                <a href="products.html" class="side-banner-link">
+                  Khám phá ngay
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="side-banner-card side-banner-2">
+              <div class="side-banner-content">
+                <span class="side-banner-tag">PHỤ KIỆN DA THỦ CÔNG</span>
+                <h3 class="side-banner-title">Túi Xách & Ví Da Thật Nhập Khẩu</h3>
+                <a href="products.html" class="side-banner-link">
+                  Xem bộ sưu tập
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VALUE PROPOSITION / BRAND COMMITMENT BAR
+           ==================================================================== -->
+      <section class="features-section">
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon-box">🚚</div>
+            <div>
+              <h4 class="feature-title">Miễn Phí Vận Chuyển</h4>
+              <p class="feature-desc">Đơn hàng từ 500k toàn quốc</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">🛡️</div>
+            <div>
+              <h4 class="feature-title">Cam Kết Chính Hãng 100%</h4>
+              <p class="feature-desc">Hoàn tiền 200% nếu phát hiện hàng giả</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">🔄</div>
+            <div>
+              <h4 class="feature-title">Đổi Trả 30 Ngày</h4>
+              <p class="feature-desc">Thủ tục nhanh gọn, đổi mới 1 - 1</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">🎧</div>
+            <div>
+              <h4 class="feature-title">Hỗ Trợ Tận Tâm 24/7</h4>
+              <p class="feature-desc">Hotline chăm sóc khách hàng 1900 8888</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           2. LƯỚI DANH MỤC (CATEGORY GRID)
+           ==================================================================== -->
+      <section id="categories" class="categories-section">
+        <div class="section-heading-row">
+          <div class="section-title-box">
+            <span class="section-badge">DANH MỤC SẢN PHẨM</span>
+            <h2 class="section-title">Khám Phá Theo Ngành Hàng</h2>
+          </div>
+          <a href="products.html" class="section-view-all">
+            Xem tất cả ngành hàng
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <div class="category-grid">
+          <!-- Category 1 -->
+          <div class="category-card" onclick="filterByCategory('audio')">
+            <div class="category-icon-wrapper">🎧</div>
+            <h3 class="category-name">Thiết Bị Âm Thanh</h3>
+            <span class="category-count">128+ sản phẩm</span>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="category-card" onclick="filterByCategory('watch')">
+            <div class="category-icon-wrapper">⌚</div>
+            <h3 class="category-name">Đồng Hồ Hiệu</h3>
+            <span class="category-count">94+ sản phẩm</span>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="category-card" onclick="filterByCategory('phone')">
+            <div class="category-icon-wrapper">📱</div>
+            <h3 class="category-name">Điện Thoại & Tablet</h3>
+            <span class="category-count">186+ sản phẩm</span>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="category-card" onclick="filterByCategory('laptop')">
+            <div class="category-icon-wrapper">💻</div>
+            <h3 class="category-name">Laptop Siêu Mỏng</h3>
+            <span class="category-count">75+ sản phẩm</span>
+          </div>
+
+          <!-- Category 5 -->
+          <div class="category-card" onclick="filterByCategory('fashion-men')">
+            <div class="category-icon-wrapper">👔</div>
+            <h3 class="category-name">Thời Trang Nam</h3>
+            <span class="category-count">210+ sản phẩm</span>
+          </div>
+
+          <!-- Category 6 -->
+          <div class="category-card" onclick="filterByCategory('fashion-women')">
+            <div class="category-icon-wrapper">👗</div>
+            <h3 class="category-name">Thời Trang Nữ</h3>
+            <span class="category-count">315+ sản phẩm</span>
+          </div>
+
+          <!-- Category 7 -->
+          <div class="category-card" onclick="filterByCategory('shoes')">
+            <div class="category-icon-wrapper">👟</div>
+            <h3 class="category-name">Giày & Sneaker</h3>
+            <span class="category-count">142+ sản phẩm</span>
+          </div>
+
+          <!-- Category 8 -->
+          <div class="category-card" onclick="filterByCategory('bags')">
+            <div class="category-icon-wrapper">👜</div>
+            <h3 class="category-name">Túi Xách & Đồ Da</h3>
+            <span class="category-count">98+ sản phẩm</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           FLASH SALE COUNTDOWN & DEALS
+           ==================================================================== -->
+      <section id="flash-sale" class="flash-sale-box">
+        <div class="flash-sale-header">
+          <div class="flash-title-area">
+            <span class="flash-tag">⚡ FLASH SALE</span>
+            <h2 class="flash-title-text">Săn Deal Chớp Nhoáng</h2>
+          </div>
+          <div class="countdown-wrapper">
+            <span>Kết thúc sau:</span>
+            <div class="timer-box">
+              <span class="timer-unit" id="timerHours">05</span>
+              <span class="timer-colon">:</span>
+              <span class="timer-unit" id="timerMinutes">24</span>
+              <span class="timer-colon">:</span>
+              <span class="timer-unit" id="timerSeconds">38</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flash-grid">
+          <!-- Flash Item 1 -->
+          <div class="flash-card">
+            <div class="flash-img-box">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Sony WH-1000XM5" />
+              <span class="discount-ribbon">-22%</span>
+            </div>
+            <h3 class="flash-prod-title">Tai Nghe Chống Ồn Không Dây Sony WH-1000XM5</h3>
+            <div class="flash-price-row">
+              <span class="current-price">6.990.000 ₫</span>
+              <span class="old-price">8.990.000 ₫</span>
+            </div>
+            <div class="deal-progress-box">
+              <div class="progress-track">
+                <div class="progress-bar" style="width: 82%;"></div>
+              </div>
+              <div class="deal-sold-text">
+                <span>🔥 Đã bán 82/100</span>
+                <span>Chỉ còn 18 cái</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flash Item 2 -->
+          <div class="flash-card">
+            <div class="flash-img-box">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Apple Watch Ultra" />
+              <span class="discount-ribbon">-18%</span>
+            </div>
+            <h3 class="flash-prod-title">Đồng Hồ Thông Minh Apple Watch Ultra 2 Titanium 49mm</h3>
+            <div class="flash-price-row">
+              <span class="current-price">18.490.000 ₫</span>
+              <span class="old-price">22.490.000 ₫</span>
+            </div>
+            <div class="deal-progress-box">
+              <div class="progress-track">
+                <div class="progress-bar" style="width: 65%;"></div>
+              </div>
+              <div class="deal-sold-text">
+                <span>🔥 Đã bán 65/100</span>
+                <span>Chỉ còn 35 cái</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flash Item 3 -->
+          <div class="flash-card">
+            <div class="flash-img-box">
+              <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80" alt="Marshall Stanmore III" />
+              <span class="discount-ribbon">-25%</span>
+            </div>
+            <h3 class="flash-prod-title">Loa Bluetooth Cao Cấp Marshall Stanmore III Chính Hãng</h3>
+            <div class="flash-price-row">
+              <span class="current-price">7.890.000 ₫</span>
+              <span class="old-price">10.490.000 ₫</span>
+            </div>
+            <div class="deal-progress-box">
+              <div class="progress-track">
+                <div class="progress-bar" style="width: 90%;"></div>
+              </div>
+              <div class="deal-sold-text">
+                <span>🔥 Đã bán 90/100</span>
+                <span>Sắp cháy hàng</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flash Item 4 -->
+          <div class="flash-card">
+            <div class="flash-img-box">
+              <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80" alt="Nike Jordan 1" />
+              <span class="discount-ribbon">-30%</span>
+            </div>
+            <h3 class="flash-prod-title">Giày Thể Thao Sneaker Nike Air Jordan 1 Retro High OG</h3>
+            <div class="flash-price-row">
+              <span class="current-price">3.490.000 ₫</span>
+              <span class="old-price">4.990.000 ₫</span>
+            </div>
+            <div class="deal-progress-box">
+              <div class="progress-track">
+                <div class="progress-bar" style="width: 74%;"></div>
+              </div>
+              <div class="deal-sold-text">
+                <span>🔥 Đã bán 74/100</span>
+                <span>Chỉ còn 26 đôi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           3. LƯỚI SẢN PHẨM NỔI BẬT (FEATURED PRODUCTS GRID)
+           ==================================================================== -->
+      <section id="featured" class="featured-section">
+        <div class="section-heading-row">
+          <div class="section-title-box">
+            <span class="section-badge">GỢI Ý HÔM NAY</span>
+            <h2 class="section-title">Sản Phẩm Nổi Bật &amp; Bán Chạy</h2>
+          </div>
+          <a href="products.html" class="section-view-all">
+            Xem tất cả sản phẩm
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="filter-tabs">
+          <button class="tab-btn active" onclick="filterTab('all', this)">Tất Cả Sản Phẩm</button>
+          <button class="tab-btn" onclick="filterTab('tech', this)">💻 Thiết Bị Số &amp; PC</button>
+          <button class="tab-btn" onclick="filterTab('audio', this)">🎧 Âm Thanh Hi-End</button>
+          <button class="tab-btn" onclick="filterTab('watch', this)">⌚ Đồng Hồ Cao Cấp</button>
+          <button class="tab-btn" onclick="filterTab('fashion', this)">👔 Thời Trang &amp; Đồ Da</button>
+        </div>
+
+        <!-- The Responsive Grid of 8 Featured Products with Mock Data -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Product 1 -->
+          <article class="product-card" data-category="tech">
+            <div class="product-thumb">
+              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="MacBook Pro M3" />
+              <div class="badge-group">
+                <span class="prod-badge badge-hot">HOT</span>
+                <span class="prod-badge badge-discount">-10%</span>
+              </div>
+              <button class="btn-wishlist" onclick="toggleWishlist(this)" title="Yêu thích">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Apple Official</span>
+                <span>Đã bán 320+</span>
+              </div>
+              <h3 class="product-title">
+                <a href="products.html">Laptop Apple MacBook Pro 14 inch M3 Pro (18GB / 512GB SSD) Space Black</a>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">5.0 (185)</span>
+              </div>
+              <div class="product-pricing">
+                <span class="current-price">48.990.000 ₫</span>
+                <span class="old-price">54.990.000 ₫</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Laptop Apple MacBook Pro 14 M3 Pro', '48.990.000 ₫')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Thêm vào giỏ
+                </button>
+                <button class="btn-quick-view" onclick="quickView('Laptop Apple MacBook Pro 14 M3 Pro', '48.990.000 ₫', 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80', 'Apple M3 Pro 11-core CPU, 14-core GPU, màn hình Liquid Retina XDR 120Hz siêu nét.')" title="Xem nhanh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card" data-category="audio">
+            <div class="product-thumb">
+              <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80" alt="AirPods Max" />
+              <div class="badge-group">
+                <span class="prod-badge badge-new">MỚI</span>
+                <span class="prod-badge badge-discount">-12%</span>
+              </div>
+              <button class="btn-wishlist" onclick="toggleWishlist(this)" title="Yêu thích">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Apple Sound</span>
+                <span>Đã bán 450+</span>
+              </div>
+              <h3 class="product-title">
+                <a href="products.html">Tai Nghe Chụp Tai Apple AirPods Max 2024 Cổng Sạc Type-C Midnight</a>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">4.9 (214)</span>
+              </div>
+              <div class="product-pricing">
+                <span class="current-price">12.890.000 ₫</span>
+                <span class="old-price">14.690.000 ₫</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Tai Nghe Apple AirPods Max 2024 Type-C', '12.890.000 ₫')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Thêm vào giỏ
+                </button>
+                <button class="btn-quick-view" onclick="quickView('Tai Nghe Apple AirPods Max 2024 Type-C', '12.890.000 ₫', 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80', 'Công nghệ chống ồn ANC chủ động thông minh, âm thanh vòm Spatial Audio với tính năng theo dõi đầu sống động.')" title="Xem nhanh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card" data-category="watch">
+            <div class="product-thumb">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Tissot Watch" />
+              <div class="badge-group">
+                <span class="prod-badge badge-discount">-15%</span>
+              </div>
+              <button class="btn-wishlist" onclick="toggleWishlist(this)" title="Yêu thích">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Tissot Swiss</span>
+                <span>Đã bán 110+</span>
+              </div>
+              <h3 class="product-title">
+                <a href="products.html">Đồng Hồ Cơ Nam Tissot Le Locle Powermatic 80 Dây Kim Loại Bạc Thụy Sĩ</a>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">4.8 (89)</span>
+              </div>
+              <div class="product-pricing">
+                <span class="current-price">14.850.000 ₫</span>
+                <span class="old-price">17.500.000 ₫</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Đồng Hồ Nam Tissot Le Locle Powermatic 80', '14.850.000 ₫')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Thêm vào giỏ
+                </button>
+                <button class="btn-quick-view" onclick="quickView('Đồng Hồ Nam Tissot Le Locle Powermatic 80', '14.850.000 ₫', 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80', 'Bộ máy cơ Thụy Sĩ Powermatic 80 trữ cót lên đến 80 giờ liên tục, mặt số guilloche tinh xảo.')" title="Xem nhanh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card" data-category="tech">
+            <div class="product-thumb">
+              <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80" alt="iPhone 16 Pro Max" />
+              <div class="badge-group">
+                <span class="prod-badge badge-hot">HOT</span>
+                <span class="prod-badge badge-discount">-8%</span>
+              </div>
+              <button class="btn-wishlist" onclick="toggleWishlist(this)" title="Yêu thích">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Apple Mobile</span>
+                <span>Đã bán 780+</span>
+              </div>
+              <h3 class="product-title">
+                <a href="products.html">Điện Thoại Apple iPhone 16 Pro Max 256GB Titan Sa Mạc VN/A Chính Hãng</a>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">5.0 (520)</span>
+              </div>
+              <div class="product-pricing">
+                <span class="current-price">34.490.000 ₫</span>
+                <span class="old-price">37.490.000 ₫</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Điện Thoại Apple iPhone 16 Pro Max 256GB', '34.490.000 ₫')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Thêm vào giỏ
+                </button>
+                <button class="btn-quick-view" onclick="quickView('Apple iPhone 16 Pro Max 256GB Titan Sa Mạc', '34.490.000 ₫', 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80', 'Khung viền Titanium cấp hàng không vũ trụ, chip A18 Pro mạnh mẽ vượt bậc, camera zoom quang học 5x sắc nét.')" title="Xem nhanh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 5 -->
+          <article class="product-card" data-category="fashion">
+            <div class="product-thumb">
+              <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80" alt="Leather Bag" />
+              <div class="badge-group">
+                <span class="prod-badge badge-discount">-25%</span>
+              </div>
+              <button class="btn-wishlist" onclick="toggleWishlist(this)" title="Yêu thích">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">JML Leather</span>
+                <span>Đã bán 140+</span>
+              </div>
+              <h3 class="product-title">
+                <a href="products.html">Túi Xách Da Bò Sáp Thật Phong Cách Retro Cổ Điển Nhập Khẩu Italia</a>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">4.9 (98)</span>
+              </div>
+              <div class="product-pricing">
+                <span class="current-price">2.450.000 ₫</span>
+                <span class="old-price">3.250.000 ₫</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Túi Xách Da Bò Sáp Thật Retro JML', '2.450.000 ₫')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Thêm vào giỏ
+                </button>
+                <button class="btn-quick-view" onclick="quickView('Túi Xách Da Bò Sáp Thật Retro JML', '2.450.000 ₫', 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80', 'Gia công thủ công tỉ mỉ bằng chất liệu da bò sáp nguyên tấm, càng dùng da càng bóng và mềm mịn.')" title="Xem nhanh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 6 -->
+          <article class="product-card" data-category="fashion">
+            <div class="product-thumb">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Wool Coat" />
+              <div class="badge-group">
+                <span class="prod-badge badge-new">MỚI</span>
+                <span class="prod-badge badge-discount">-20%</span>
+              </div>
+              <button class="btn-wishlist" onclick="toggleWishlist(this)" title="Yêu thích">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">JML Fashion</span>
+                <span>Đã bán 230+</span>
+              </div>
+              <h3 class="product-title">
+                <a href="products.html">Áo Khoác Măng Tô Nam Dạ Wool Dáng Dài Cao Cấp Phong Cách Hàn Quốc</a>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">4.8 (115)</span>
+              </div>
+              <div class="product-pricing">
+                <span class="current-price">2.850.000 ₫</span>
+                <span class="old-price">3.550.000 ₫</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Áo Khoác Măng Tô Nam Dạ Wool Dáng Dài', '2.850.000 ₫')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Thêm vào giỏ
+                </button>
+                <button class="btn-quick-view" onclick="quickView('Áo Khoác Măng Tô Nam Dạ Wool Dáng Dài', '2.850.000 ₫', 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80', 'Chất liệu dạ lông cừu ép nhiệt dày dặn, giữ ấm vượt trội, phom dáng tôn vóc dáng chuẩn nam tính.')" title="Xem nhanh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 7 -->
+          <article class="product-card" data-category="audio">
+            <div class="product-thumb">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Sony Headphones" />
+              <div class="badge-group">
+                <span class="prod-badge badge-hot">HOT</span>
+                <span class="prod-badge badge-discount">-16%</span>
+              </div>
+              <button class="btn-wishlist" onclick="toggleWishlist(this)" title="Yêu thích">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Sony Audio</span>
+                <span>Đã bán 590+</span>
+              </div>
+              <h3 class="product-title">
+                <a href="products.html">Tai Nghe Chống Ồn Cao Cấp Sony WH-1000XM4 Âm Bass Sâu Hi-Res</a>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">4.9 (340)</span>
+              </div>
+              <div class="product-pricing">
+                <span class="current-price">5.490.000 ₫</span>
+                <span class="old-price">6.590.000 ₫</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Tai Nghe Chống Ồn Sony WH-1000XM4', '5.490.000 ₫')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Thêm vào giỏ
+                </button>
+                <button class="btn-quick-view" onclick="quickView('Tai Nghe Chống Ồn Sony WH-1000XM4', '5.490.000 ₫', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80', 'Pin sử dụng liên tục 30 giờ, chống ồn cá nhân hóa thông minh với vi xử lý HD QN1 chuyên biệt.')" title="Xem nhanh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 8 -->
+          <article class="product-card" data-category="watch">
+            <div class="product-thumb">
+              <img src="https://images.unsplash.com/photo-1547996160-71dfabbce5fa?auto=format&fit=crop&w=600&q=80" alt="Seiko Presage" />
+              <div class="badge-group">
+                <span class="prod-badge badge-new">MỚI</span>
+              </div>
+              <button class="btn-wishlist" onclick="toggleWishlist(this)" title="Yêu thích">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Seiko Japan</span>
+                <span>Đã bán 160+</span>
+              </div>
+              <h3 class="product-title">
+                <a href="products.html">Đồng Hồ Cơ Seiko Presage Cocktail Time Dây Da Nâu Sang Trọng</a>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">4.8 (120)</span>
+              </div>
+              <div class="product-pricing">
+                <span class="current-price">9.800.000 ₫</span>
+                <span class="old-price">11.500.000 ₫</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-add-cart" onclick="addToCart('Đồng Hồ Cơ Seiko Presage Cocktail Time', '9.800.000 ₫')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Thêm vào giỏ
+                </button>
+                <button class="btn-quick-view" onclick="quickView('Đồng Hồ Cơ Seiko Presage Cocktail Time', '9.800.000 ₫', 'https://images.unsplash.com/photo-1547996160-71dfabbce5fa?auto=format&fit=crop&w=600&q=80', 'Mặt số vân tia hướng tâm lấy cảm hứng từ ly cocktail Blue Moon, kính vòm Hardlex đặc trưng của thương hiệu Seiko.')" title="Xem nhanh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- View More CTA -->
+        <div class="view-more-box">
+          <a href="products.html" class="btn-view-more">
+            <span>Xem Tất Cả 200+ Sản Phẩm</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           PROMOTIONAL STRIP (COUPON / CALL TO ACTION)
+           ==================================================================== -->
+      <section id="promo" class="promo-strip">
+        <div class="promo-left">
+          <div class="promo-tag">🎁 QUÀ TẶNG THÀNH VIÊN MỚI</div>
+          <h2 class="promo-heading">Giảm Ngay 100.000 ₫ Cho Đơn Hàng Đầu Tiên!</h2>
+          <p class="promo-sub">Áp dụng cho mọi hóa đơn từ 500.000 ₫ khi mua sắm các thiết bị công nghệ &amp; thời trang tại JML Store.</p>
+        </div>
+        <div class="promo-right">
+          <div class="voucher-code-badge" id="voucherCode">JMLNEWBIE</div>
+          <button class="btn-copy-code" onclick="copyVoucherCode()">Sao Chép Mã</button>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           CUSTOMER REVIEWS & TESTIMONIALS
+           ==================================================================== -->
+      <section id="reviews" class="testimonials-section">
+        <div class="section-heading-row">
+          <div class="section-title-box">
+            <span class="section-badge">KHÁCH HÀNG NÓI GÌ</span>
+            <h2 class="section-title">Trải Nghiệm Khách Hàng Thực Tế</h2>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-author">
+              <img class="author-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Nguyễn Minh Thư" />
+              <div class="author-info">
+                <h4>Nguyễn Minh Thư</h4>
+                <span>✓ Đã mua hàng tại JML Store</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "Giao hàng siêu nhanh trong 2 tiếng tại Hà Nội! Tai nghe Sony WH-1000XM5 nguyên seal chính hãng, chất âm quá đỉnh và chống ồn hoàn hảo. Chắc chắn sẽ tiếp tục ủng hộ!"
+            </p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-author">
+              <img class="author-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Trần Đình Dũng" />
+              <div class="author-info">
+                <h4>Trần Đình Dũng</h4>
+                <span>✓ Đã mua hàng tại JML Store</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "Chiếc đồng hồ Tissot đúng như kỳ vọng, giấy bảo hành quốc tế đầy đủ. Tư vấn viên hỗ trợ nhiệt tình, giải đáp mọi thắc mắc trước khi thanh toán rất chuyên nghiệp."
+            </p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-author">
+              <img class="author-avatar" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Lê Hoàng Yến" />
+              <div class="author-info">
+                <h4>Lê Hoàng Yến</h4>
+                <span>✓ Đã mua hàng tại JML Store</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "Mua MacBook Pro M3 được tặng voucher giảm thêm 500k và balo thời trang. Sản phẩm chính hãng Apple, bảo hành 1 đổi 1 an tâm tuyệt đối. Đánh giá 5 sao cho JML Store!"
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         4. FOOTER (CHÂN TRANG TOÀN DIỆN)
+         ==================================================================== -->
+    <footer id="footer">
+      <!-- Newsletter Bar -->
+      <div class="newsletter-bar">
+        <div class="container newsletter-inner">
+          <div class="newsletter-text">
+            <h3>Đăng Ký Nhận Bản Tin Ưu Đãi Độc Quyền</h3>
+            <p>Nhận ngay thông báo voucher giảm giá 50% &amp; cập nhật xu hướng công nghệ mới nhất.</p>
+          </div>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <input type="email" class="newsletter-input" placeholder="Nhập địa chỉ email của bạn..." required />
+            <button type="submit" class="newsletter-btn">Đăng Ký</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Main Footer 4 Columns -->
+      <div class="footer-main">
+        <div class="container footer-grid">
+          <!-- Col 1: Brand Info -->
+          <div class="footer-col-brand">
+            <a class="logo" href="index.html" style="color: #ffffff;">
+              <span class="logo-badge">JML</span>
+              <span>STORE</span>
+            </a>
+            <p class="brand-desc">
+              JML Store - Sàn thương mại điện tử chuyên cung cấp sản phẩm công nghệ, đồng hồ &amp; thời trang cao cấp chính hãng hàng đầu Việt Nam. Tận tâm phục vụ vì trải nghiệm khách hàng.
+            </p>
+            <div class="contact-list">
+              <div class="contact-item">
+                <span>📍</span>
+                <span>Tòa nhà Discovery Complex, Cầu Giấy, Hà Nội</span>
+              </div>
+              <div class="contact-item">
+                <span>📞</span>
+                <span>Hotline CSKH: <strong>1900 8888</strong> (08:00 - 22:00)</span>
+              </div>
+              <div class="contact-item">
+                <span>✉️</span>
+                <span>Email: <strong>cskh@jmlstore.vn</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 2: About Us -->
+          <div>
+            <h4 class="footer-title">Về JML Store</h4>
+            <ul class="footer-links">
+              <li><a href="#">Giới thiệu công ty</a></li>
+              <li><a href="#">Tuyển dụng nhân tài</a></li>
+              <li><a href="#">Hệ thống 15+ cửa hàng</a></li>
+              <li><a href="#">Tin tức &amp; Khuyến mãi</a></li>
+              <li><a href="#">Bán hàng cùng JML Store</a></li>
+              <li><a href="#">Hợp tác thương hiệu</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Customer Care -->
+          <div>
+            <h4 class="footer-title">Hỗ Trợ Khách Hàng</h4>
+            <ul class="footer-links">
+              <li><a href="#">Trung tâm trợ giúp 24/7</a></li>
+              <li><a href="#">Hướng dẫn đặt hàng online</a></li>
+              <li><a href="#">Chính sách vận chuyển &amp; giao nhận</a></li>
+              <li><a href="#">Chính sách bảo hành &amp; đổi trả 30 ngày</a></li>
+              <li><a href="#">Tra cứu tình trạng đơn hàng</a></li>
+              <li><a href="#">Chính sách bảo mật thông tin</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Payments & Social -->
+          <div>
+            <h4 class="footer-title">Phương Thức Thanh Toán</h4>
+            <div class="payment-methods">
+              <span class="pay-badge">💳 VISA</span>
+              <span class="pay-badge">💳 Mastercard</span>
+              <span class="pay-badge">📱 VNPay</span>
+              <span class="pay-badge">👛 MoMo</span>
+              <span class="pay-badge">🏦 Trả Góp 0%</span>
+            </div>
+
+            <h4 class="footer-title" style="margin-top: 14px;">Đơn Vị Vận Chuyển</h4>
+            <div class="payment-methods">
+              <span class="pay-badge">🚀 Hỏa Tốc 2h</span>
+              <span class="pay-badge">🚚 GHTK</span>
+              <span class="pay-badge">📦 Viettel Post</span>
+            </div>
+
+            <h4 class="footer-title" style="margin-top: 14px;">Kết Nối Với Chúng Tôi</h4>
+            <div class="social-links">
+              <a href="#" class="social-btn" title="Facebook">f</a>
+              <a href="#" class="social-btn" title="Instagram">ig</a>
+              <a href="#" class="social-btn" title="YouTube">yt</a>
+              <a href="#" class="social-btn" title="TikTok">tk</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Copyright -->
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <p>© 2026 JML Store. Toàn bộ bản quyền được bảo lưu. Thiết kế và phát triển bởi Đội ngũ JML.</p>
+          <p>Mã dự án: <strong>TF17330</strong> | Sinh viên thực hiện: <strong>Vũ Dũng (B25DTCN161)</strong></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTopBtn" onclick="scrollToTop()" title="Lên đầu trang">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <!-- Toast Notification Box -->
+    <div class="toast-box" id="toastBox">
+      <span id="toastIcon">🛒</span>
+      <span id="toastMessage">Đã thêm sản phẩm vào giỏ hàng thành công!</span>
+    </div>
+
+    <!-- Quick View Product Modal -->
+    <div class="modal-overlay" id="quickViewModal" onclick="closeModalOnOutside(event)">
+      <div class="modal-box">
+        <button class="modal-close-btn" onclick="closeQuickView()">✕</button>
+        <div class="modal-grid">
+          <div class="modal-img-box">
+            <img id="modalImg" src="" alt="Sản phẩm" />
+          </div>
+          <div>
+            <div class="product-category" id="modalCategory" style="margin-bottom: 6px;">JML OFFICIAL</div>
+            <h3 id="modalTitle" style="font-size: 18px; font-weight: 800; line-height: 1.35; margin-bottom: 12px; color: var(--secondary);">Tên sản phẩm</h3>
+            <div class="product-rating" style="margin-bottom: 12px;">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">5.0 (Đánh giá hoàn hảo)</span>
+            </div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 14px;" id="modalPrice">0 ₫</div>
+            <p id="modalDesc" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+              Mô tả chi tiết sản phẩm.
+            </p>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-hero-primary" style="flex: 1; justify-content: center;" onclick="addModalToCart()">
+                Thêm Vào Giỏ Hàng
+              </button>
+              <a href="products.html" class="btn-hero-outline" style="color: var(--secondary); border-color: var(--border);">
+                Xem Chi Tiết
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Auth Modal -->
+    <div class="modal-overlay" id="userAuthModal" onclick="closeModalOnOutside(event)">
+      <div class="modal-box" style="max-width: 440px;">
+        <button class="modal-close-btn" onclick="closeUserModal()">✕</button>
+        <div style="text-align: center; margin-bottom: 20px;">
+          <div class="logo" style="justify-content: center; margin-bottom: 8px;">
+            <span class="logo-badge">JML</span>
+            <span>STORE</span>
+          </div>
+          <h3 style="font-size: 18px; font-weight: 800; color: var(--secondary);">Đăng Nhập Tài Khoản</h3>
+          <p style="font-size: 13px; color: var(--text-muted);">Chào mừng bạn quay lại với JML Store</p>
+        </div>
+        <form onsubmit="handleAuthSubmit(event)">
+          <div style="margin-bottom: 14px;">
+            <label style="display: block; font-size: 12.5px; font-weight: 700; margin-bottom: 6px;">Email hoặc Số điện thoại</label>
+            <input type="text" class="search-input" style="width: 100%; border: 1px solid var(--border); padding: 10px 14px; border-radius: var(--radius-sm); background: var(--surface-dim);" placeholder="example@email.com" required />
+          </div>
+          <div style="margin-bottom: 18px;">
+            <label style="display: block; font-size: 12.5px; font-weight: 700; margin-bottom: 6px;">Mật khẩu</label>
+            <input type="password" class="search-input" style="width: 100%; border: 1px solid var(--border); padding: 10px 14px; border-radius: var(--radius-sm); background: var(--surface-dim);" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn-hero-primary" style="width: 100%; justify-content: center; margin-bottom: 12px;">Đăng Nhập</button>
+          <div style="text-align: center; font-size: 12.5px; color: var(--text-muted);">
+            Chưa có tài khoản? <a href="#" style="color: var(--primary); font-weight: 700;" onclick="showToast('Hệ thống đăng ký thành viên đang mở!')">Đăng ký ngay</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         JAVASCRIPT LOGIC & INTERACTIVITY
+         ==================================================================== -->
+    <script>
+      // 1. Interactive Slider Carousel
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slider-dot');
+      let slideTimer = null;
+
+      function showSlide(index) {
+        if (index >= slides.length) currentSlide = 0;
+        else if (index < 0) currentSlide = slides.length - 1;
+        else currentSlide = index;
+
+        slides.forEach((s, idx) => {
+          s.classList.toggle('active', idx === currentSlide);
+        });
+
+        dots.forEach((d, idx) => {
+          d.classList.toggle('active', idx === currentSlide);
+        });
+      }
+
+      function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+        resetSlideInterval();
+      }
+
+      function setSlide(index) {
+        showSlide(index);
+        resetSlideInterval();
+      }
+
+      function autoPlaySlides() {
+        slideTimer = setInterval(() => {
+          showSlide(currentSlide + 1);
+        }, 4500);
+      }
+
+      function resetSlideInterval() {
+        clearInterval(slideTimer);
+        autoPlaySlides();
+      }
+
+      autoPlaySlides();
+
+      // 2. Countdown Timer for Flash Sale
+      let hours = 5, minutes = 24, seconds = 38;
+      const hoursEl = document.getElementById('timerHours');
+      const minEl = document.getElementById('timerMinutes');
+      const secEl = document.getElementById('timerSeconds');
+
+      setInterval(() => {
+        if (seconds > 0) {
+          seconds--;
+        } else {
+          seconds = 59;
+          if (minutes > 0) {
+            minutes--;
+          } else {
+            minutes = 59;
+            if (hours > 0) hours--;
+            else hours = 12;
+          }
+        }
+        if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+        if (minEl) minEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+        if (secEl) secEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+      }, 1000);
+
+      // 3. Category Filter Tabs
+      function filterTab(category, btn) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const cards = document.querySelectorAll('.product-card');
+        cards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      function filterByCategory(cat) {
+        window.location.href = 'products.html?category=' + encodeURIComponent(cat);
+      }
+
+      // 4. Cart & Wishlist Counters
+      let cartCount = 2;
+      let wishlistCount = 3;
+
+      function addToCart(productName, price) {
+        cartCount++;
+        const badge = document.getElementById('cartBadge');
+        if (badge) badge.textContent = cartCount;
+        showToast(`Đã thêm "${productName}" vào giỏ hàng!`);
+      }
+
+      function toggleWishlist(btn) {
+        btn.classList.toggle('active');
+        const badge = document.getElementById('wishlistCount');
+        if (btn.classList.contains('active')) {
+          wishlistCount++;
+          showToast('Đã thêm vào danh sách yêu thích!');
+        } else {
+          wishlistCount = Math.max(0, wishlistCount - 1);
+          showToast('Đã bỏ khỏi danh sách yêu thích!');
+        }
+        if (badge) badge.textContent = wishlistCount;
+      }
+
+      function toggleCartDrawer() {
+        showToast(`Giỏ hàng của bạn đang có ${cartCount} sản phẩm.`);
+      }
+
+      // 5. Toast Notification System
+      let toastTimeout = null;
+      function showToast(message, icon = '🛒') {
+        const toast = document.getElementById('toastBox');
+        const msgEl = document.getElementById('toastMessage');
+        const iconEl = document.getElementById('toastIcon');
+
+        if (!toast || !msgEl) return;
+        msgEl.textContent = message;
+        if (iconEl) iconEl.textContent = icon;
+
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3200);
+      }
+
+      // 6. Quick View Modal
+      let currentModalProd = { name: '', price: '' };
+      function quickView(title, price, imgUrl, desc) {
+        currentModalProd = { name: title, price: price };
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalPrice').textContent = price;
+        document.getElementById('modalImg').src = imgUrl;
+        document.getElementById('modalDesc').textContent = desc;
+
+        document.getElementById('quickViewModal').classList.add('active');
+      }
+
+      function closeQuickView() {
+        document.getElementById('quickViewModal').classList.remove('active');
+      }
+
+      function addModalToCart() {
+        addToCart(currentModalProd.name, currentModalProd.price);
+        closeQuickView();
+      }
+
+      // 7. User Modal
+      function openUserModal() {
+        document.getElementById('userAuthModal').classList.add('active');
+      }
+
+      function closeUserModal() {
+        document.getElementById('userAuthModal').classList.remove('active');
+      }
+
+      function closeModalOnOutside(event) {
+        if (event.target.classList.contains('modal-overlay')) {
+          event.target.classList.remove('active');
+        }
+      }
+
+      function handleAuthSubmit(e) {
+        e.preventDefault();
+        closeUserModal();
+        showToast('Đăng nhập thành công! Chào mừng bạn.', '🎉');
+      }
+
+      // 8. Copy Voucher Code
+      function copyVoucherCode() {
+        const code = document.getElementById('voucherCode').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          showToast('Đã sao chép mã voucher ' + code + ' thành công!', '🎁');
+        }).catch(() => {
+          showToast('Mã voucher: ' + code, '🎁');
+        });
+      }
+
+      // 9. Newsletter & Search
+      function handleNewsletter(e) {
+        e.preventDefault();
+        showToast('Cảm ơn bạn đã đăng ký nhận bản tin!', '✉️');
+        e.target.reset();
+      }
+
+      function handleSearch(e) {
+        e.preventDefault();
+        const q = document.getElementById('searchInput').value.trim();
+        if (q) {
+          window.location.href = 'products.html?q=' + encodeURIComponent(q);
+        } else {
+          showToast('Vui lòng nhập từ khóa tìm kiếm!', '🔍');
+        }
+      }
+
+      // 10. Back to top button
+      window.addEventListener('scroll', () => {
+        const backBtn = document.getElementById('backToTopBtn');
+        if (window.scrollY > 400) {
+          backBtn.classList.add('show');
+        } else {
+          backBtn.classList.remove('show');
+        }
+      });
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
+  </body>
+</html>
